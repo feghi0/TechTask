@@ -1,0 +1,25 @@
+# Decisiones funcionales y técnicas
+
+## Registro de aprobación
+
+Fuente: chat, 16/11/2026. El usuario dijo: «apruebo totalmente y prefiero las cuentas privadas, a partir de ahora quiero que seas totalmente autonomo haciendo este proyecto». Aprueba el análisis anterior, sus reglas y alcance. No se atribuyen reflexiones personales adicionales. Los detalles de implementación proporcionales se resuelven por la autonomía concedida.
+
+| ID | Pregunta / alternativas | Decisión y fundamento | Consecuencias |
+|---|---|---|---|
+| D01 | ¿Reescribir o evolucionar TP4? | Evolucionar. Base real conservada en primer commit. | Mantener componentes y capas, reemplazando contratos cuando lo exige el alcance. |
+| D02 | ¿Demo compartida o cuentas privadas? | Cuentas privadas, elección explícita del usuario. | Autenticación, sesiones y aislamiento en cada operación. |
+| D03 | ¿SQLite con volumen o PostgreSQL externo? | PostgreSQL, recomendado en análisis aprobado para hosting efímero. | Migraciones y exportación/importación; no descartar SQLite previo. |
+| D04 | ¿Catálogo de materias o texto validado? | Texto obligatorio validado; alcance aprobado, sin catálogo institucional. | No afirmar validación contra un padrón. |
+| D05 | ¿Urgencia TP4 de 3 días o niveles 7/3? | Niveles 7/3 aprobados; fecha local de negocio en Argentina. | Documentar cambio; antecedentes TP4 permanecen históricos. |
+| D06 | ¿Transiciones libres o matriz? | Matriz aprobada en spec.md, entrega condicionada por dependencias. | Crear siempre pendiente; impedir reaperturas inconsistentes. |
+| D07 | ¿Dependencia única o grafo? | Varias obligatorias dentro del mismo proyecto; sin ciclos ni duplicados. | Recorrido y validación transaccional del grafo. |
+| D08 | ¿Porcentaje almacenado o calculado? | Calculado sobre tareas activas, vacío 0%. | Evitar desincronización y división por cero. |
+| D09 | ¿Conflicto bloquea o advierte? | Advertir al menos tres entregas no realizadas en ventana de tres días. | No bloquear el registro de una planificación difícil. |
+| D10 | ¿Baja física o conservación? | Baja lógica de tareas; impedir baja de entregadas o con dependientes activos. Proyecto solo eliminable vacío. | Preservar trazabilidad, excluir bajas de progreso/lecturas normales. |
+| D11 | ¿Concurrencia optimista o transacciones? | Ambas: version para edición y bloqueo de proyecto para operaciones críticas. | 409 por versión obsoleta, validación e historial atómicos. |
+| D12 | ¿Autenticación externa compleja o sesión simple? | Sesiones propias con cookie HttpOnly y derivación scrypt, sin JWT en localStorage. | Sin recuperación de contraseña en este alcance; no usar como sistema institucional. |
+| D13 | ¿Cómo probar sin servidor PostgreSQL instalado? | PGlite, motor PostgreSQL embebido, no una simulación SQL. | Pruebas locales reproducibles; validación adicional remota sigue siendo necesaria. |
+| D14 | ¿Frontend separado o mismo origen? | Soportar ambos; preferir Express sirviendo build React para primera publicación. | Menos configuración; CORS con allowlist exacta para origen separado. |
+| D15 | ¿Proveedores? | Render para app, Neon para PostgreSQL; propuesta técnica, acceso aún por verificar. Netlify opcional para frontend separado. | No publicar enlaces inexistentes ni contratar servicios pagos sin permiso. |
+
+La sesión TP4 registró antes la elección de SQLite integrado mediante «a». Esa decisión se conserva como antecedente y se reemplaza para el Proyecto Final con la aprobación posterior de PostgreSQL. No se altera retrospectivamente el informe TP4.
