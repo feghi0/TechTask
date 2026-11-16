@@ -1,0 +1,34 @@
+{
+  "data": [
+    {
+      "id": "e5232040-799b-4286-a8ad-b4d8a432dbe1",
+      "title": "Informe de redes 1794848867230",
+      "description": "Evidencia real de creación desde React.",
+      "subject": "Redes",
+      "status": "pending",
+      "priority": "medium",
+      "isFavorite": true,
+      "createdAt": "2026-11-16T17:07:47.550Z"
+    },
+    {
+      "id": "a6a32c38-254a-466b-98e3-90ebb3e0c0db",
+      "title": "Informe de redes 1794848841175",
+      "description": "Evidencia real de creación desde React.",
+      "subject": "Redes",
+      "status": "pending",
+      "priority": "medium",
+      "isFavorite": true,
+      "createdAt": "2026-11-16T17:07:21.517Z"
+    },
+    {
+      "id": "1d252671-97a3-40f6-b849-fc8cfdb3e32c",
+      "title": "Informe de redes 1794848789680",
+      "description": "Evidencia real de creación desde React.",
+      "subject": "Redes",
+      "status": "pending",
+      "priority": "medium",
+      "isFavorite": true,
+      "createdAt": "2026-11-16T17:06:30.003Z"
+    }
+  ]
+}

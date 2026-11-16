@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-16T17:17:32.716Z",
+  "database": "data/capturas-1794849448539.sqlite",
+  "viewport": {
+    "width": 1600,
+    "height": 1050
+  },
+  "createdId": "08e0b3fa-104f-4e57-af03-f17a07a7bf25",
+  "persistedId": "08e0b3fa-104f-4e57-af03-f17a07a7bf25",
+  "consoleErrors": [
+    "Failed to load resource: the server responded with a status of 400 (Bad Request)"
+  ],
+  "expectedConsoleError": "HTTP 400 durante la prueba negativa"
+}

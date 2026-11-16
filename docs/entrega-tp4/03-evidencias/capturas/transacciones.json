@@ -1,0 +1,140 @@
+[
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:3001/api/tasks",
+    "status": 201,
+    "request": {
+      "title": "Proyecto de Base de Datos",
+      "subject": "Base de Datos",
+      "description": "Diseñar las tablas y documentar sus relaciones.",
+      "status": "in_progress",
+      "priority": "high",
+      "dueDate": "2026-11-19"
+    },
+    "response": {
+      "data": {
+        "title": "Proyecto de Base de Datos",
+        "subject": "Base de Datos",
+        "description": "Diseñar las tablas y documentar sus relaciones.",
+        "status": "in_progress",
+        "priority": "high",
+        "isFavorite": false,
+        "dueDate": "2026-11-19",
+        "id": "6fa973c8-4c01-4d78-a780-ca30c0340a07",
+        "createdAt": "2026-11-16T17:17:30.606Z"
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:3001/api/tasks",
+    "status": 201,
+    "request": {
+      "title": "Entrega de Programación",
+      "subject": "Programación",
+      "description": "Entrega de ejemplo creada directamente con este estado; no demuestra una transición.",
+      "status": "delivered",
+      "priority": "medium"
+    },
+    "response": {
+      "data": {
+        "title": "Entrega de Programación",
+        "subject": "Programación",
+        "description": "Entrega de ejemplo creada directamente con este estado; no demuestra una transición.",
+        "status": "delivered",
+        "priority": "medium",
+        "isFavorite": false,
+        "id": "870be6ab-c98e-46a5-b9f2-f6f5fea6725d",
+        "createdAt": "2026-11-16T17:17:30.636Z"
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:5180/api/tasks",
+    "status": 201,
+    "request": {
+      "title": "TP de Redes",
+      "subject": "Redes",
+      "description": "Documentar la topología de red del laboratorio.",
+      "priority": "high",
+      "isFavorite": true,
+      "dueDate": "2026-11-18"
+    },
+    "response": {
+      "data": {
+        "title": "TP de Redes",
+        "subject": "Redes",
+        "description": "Documentar la topología de red del laboratorio.",
+        "status": "pending",
+        "priority": "high",
+        "isFavorite": true,
+        "dueDate": "2026-11-18",
+        "id": "08e0b3fa-104f-4e57-af03-f17a07a7bf25",
+        "createdAt": "2026-11-16T17:17:31.967Z"
+      }
+    }
+  },
+  {
+    "method": "POST",
+    "url": "http://127.0.0.1:5180/api/tasks",
+    "status": 400,
+    "request": {
+      "title": "ab",
+      "subject": "Redes",
+      "description": "",
+      "priority": "medium",
+      "isFavorite": false
+    },
+    "response": {
+      "error": {
+        "code": "VALIDATION_ERROR",
+        "message": "Los datos enviados no son válidos.",
+        "fields": {
+          "title": "Debe tener entre 3 y 60 caracteres."
+        }
+      }
+    }
+  },
+  {
+    "method": "GET",
+    "url": "http://127.0.0.1:5180/api/tasks",
+    "status": 200,
+    "response": {
+      "data": [
+        {
+          "id": "08e0b3fa-104f-4e57-af03-f17a07a7bf25",
+          "title": "TP de Redes",
+          "description": "Documentar la topología de red del laboratorio.",
+          "subject": "Redes",
+          "status": "pending",
+          "priority": "high",
+          "isFavorite": true,
+          "dueDate": "2026-11-18",
+          "createdAt": "2026-11-16T17:17:31.967Z"
+        },
+        {
+          "id": "870be6ab-c98e-46a5-b9f2-f6f5fea6725d",
+          "title": "Entrega de Programación",
+          "description": "Entrega de ejemplo creada directamente con este estado; no demuestra una transición.",
+          "subject": "Programación",
+          "status": "delivered",
+          "priority": "medium",
+          "isFavorite": false,
+          "createdAt": "2026-11-16T17:17:30.636Z"
+        },
+        {
+          "id": "6fa973c8-4c01-4d78-a780-ca30c0340a07",
+          "title": "Proyecto de Base de Datos",
+          "description": "Diseñar las tablas y documentar sus relaciones.",
+          "subject": "Base de Datos",
+          "status": "in_progress",
+          "priority": "high",
+          "isFavorite": false,
+          "dueDate": "2026-11-19",
+          "createdAt": "2026-11-16T17:17:30.606Z"
+        }
+      ]
+    }
+  }
+]

@@ -1,0 +1,11 @@
+flowchart LR
+  U[Estudiante] --> C[Componentes React]
+  C --> H[Hook useTasks]
+  H --> HTTP[Servicio HTTP fetch]
+  HTTP --> API[Express: GET y POST /api/tasks]
+  API --> Controller[TaskController: HTTP]
+  Controller --> Service[TaskService: reglas y validación]
+  Service --> Repository[TaskRepository: SQL parametrizado]
+  Repository --> DB[(SQLite: archivo del servidor)]
+  API --> Middleware[Middleware central de errores]
+  Middleware --> HTTP

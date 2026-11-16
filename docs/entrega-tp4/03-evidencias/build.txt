@@ -1,0 +1,23 @@
+
+> techtask@1.0.0 build
+> npm run typecheck && vite build && esbuild backend/src/server.ts --bundle --platform=node --format=esm --packages=external --sourcemap --outfile=dist/server/server.js
+
+
+> techtask@1.0.0 typecheck
+> tsc --noEmit
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 2090 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/frontend/index.html                   0.40 kB │ gzip:  0.29 kB
+dist/frontend/assets/index-C8v7HxBr.css   10.02 kB │ gzip:  3.15 kB
+dist/frontend/assets/index-C3ukf1nS.js   233.01 kB │ gzip: 73.60 kB
+
+✓ built in 940ms
+
+  dist\server\server.js       6.6kb
+  dist\server\server.js.map  12.0kb
+
+Done in 12ms

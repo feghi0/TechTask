@@ -1,0 +1,82 @@
+
+> techtask@1.0.0 test
+> vitest run tests/tasks.test.ts
+
+
+ RUN  v5.1.0 C:/Users/Agus/Documents/ChatGPT/Generacion T
+
+(node:7452) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+stderr | tests/tasks.test.ts > API HTTP > crea con 201 y recupera con GET
+Error: table tasks has 9 columns but 10 values were supplied
+    at TaskRepository.insert (C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/repositories/task-repository.ts:15:31)
+    at TaskService.create (C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/services/task-service.ts:31:135)
+    at create (C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/controllers/task-controller.ts:7:29)
+    at Layer.handleRequest (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\route.js:157:13)
+    at C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/app.ts:13:163
+    at Layer.handleRequest (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\index.js:435:11) {
+  code: 'ERR_SQLITE_ERROR',
+  errcode: 1,
+  errstr: 'SQL logic error'
+}
+
+stderr | tests/tasks.test.ts > API HTTP > persiste después de cerrar y abrir SQLite
+Error: table tasks has 9 columns but 10 values were supplied
+    at TaskRepository.insert (C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/repositories/task-repository.ts:15:31)
+    at TaskService.create (C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/services/task-service.ts:31:135)
+    at create (C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/controllers/task-controller.ts:7:29)
+    at Layer.handleRequest (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\route.js:157:13)
+    at C:/Users/Agus/Documents/ChatGPT/Generacion T/backend/src/app.ts:13:163
+    at Layer.handleRequest (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\layer.js:152:17)
+    at next (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\route.js:157:13)
+    at Route.dispatch (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\lib\route.js:117:3)
+    at handle (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\router\index.js:435:11) {
+  code: 'ERR_SQLITE_ERROR',
+  errcode: 1,
+  errstr: 'SQL logic error'
+}
+
+ ❯ tests/tasks.test.ts (28 tests | 2 failed) 307ms
+   ❯ API HTTP (8)
+     × crea con 201 y recupera con GET 143ms
+     × persiste después de cerrar y abrir SQLite 30ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 2 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tasks.test.ts > API HTTP > crea con 201 y recupera con GET
+Error: expected 201 "Created", got 500 "Internal Server Error"
+ ❯ tests/tasks.test.ts:23:132
+
+ ❯ Test._assertStatus node_modules/supertest/lib/test.js:535:14
+ ❯ node_modules/supertest/lib/test.js:591:13
+ ❯ Test._assertFunction node_modules/supertest/lib/test.js:568:13
+ ❯ Test.assert node_modules/supertest/lib/test.js:432:23
+ ❯ localAssert node_modules/supertest/lib/test.js:382:38
+ ❯ Server.<anonymous> node_modules/supertest/lib/test.js:126:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  2 failed | 26 passed (28)
+   Start at  14:04:55
+   Duration  1.48s (import 56%, tests 27%, transform 16%, worker 1%)
+
+ FAIL  tests/tasks.test.ts > API HTTP > persiste después de cerrar y abrir SQLite
+Error: expected 201 "Created", got 500 "Internal Server Error"
+ ❯ tests/tasks.test.ts:28:328
+
+ ❯ Test._assertStatus node_modules/supertest/lib/test.js:535:14
+ ❯ node_modules/supertest/lib/test.js:591:13
+ ❯ Test._assertFunction node_modules/supertest/lib/test.js:568:13
+ ❯ Test.assert node_modules/supertest/lib/test.js:432:23
+ ❯ localAssert node_modules/supertest/lib/test.js:382:38
+ ❯ Server.<anonymous> node_modules/supertest/lib/test.js:126:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+

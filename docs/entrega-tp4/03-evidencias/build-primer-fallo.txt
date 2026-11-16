@@ -1,0 +1,49 @@
+
+> techtask@1.0.0 build
+> npm run typecheck && vite build && esbuild backend/src/server.ts --bundle --platform=node --format=esm --packages=external --sourcemap --outfile=dist/server/server.js
+
+
+> techtask@1.0.0 typecheck
+> tsc --noEmit
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 2090 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/frontend/index.html                   0.36 kB │ gzip:  0.27 kB
+dist/frontend/assets/index-C8v7HxBr.css   10.02 kB │ gzip:  3.15 kB
+dist/frontend/assets/index-B9xp6QJN.js   233.17 kB │ gzip: 73.67 kB
+
+✓ built in 947ms
+X [ERROR] Cannot read directory "../../..": Acceso denegado.
+
+X [ERROR] Could not resolve "./backend/src/server.ts"
+
+  Use the relative path "././backend/src/server.ts" to reference the file "backend/src/server.ts". Without the leading "./", the path "./backend/src/server.ts" is being interpreted as a package path instead.
+
+2 errors
+node:child_process:955
+    throw err;
+    ^
+
+Error: Command failed: C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\@esbuild\win32-x64\esbuild.exe backend/src/server.ts --bundle --platform=node --format=esm --packages=external --sourcemap --outfile=dist/server/server.js
+    at genericNodeError (node:internal/errors:983:15)
+    at wrappedFn (node:internal/errors:537:14)
+    at checkExecSyncError (node:child_process:916:11)
+    at Object.execFileSync (node:child_process:952:15)
+    at Object.<anonymous> (C:\Users\Agus\Documents\ChatGPT\Generacion T\node_modules\esbuild\bin\esbuild:222:28)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14) {
+  status: 1,
+  signal: null,
+  output: [ null, null, null ],
+  pid: 17168,
+  stdout: null,
+  stderr: null
+}
+
+Node.js v22.21.0

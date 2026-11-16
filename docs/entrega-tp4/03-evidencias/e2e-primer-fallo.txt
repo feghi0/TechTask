@@ -1,0 +1,40 @@
+
+> techtask@1.0.0 test:e2e
+> playwright test
+
+[WebServer] (node:9768) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1964) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:6540) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\tasks.spec.ts:4:1 › crear, recargar, buscar y comprobar diseño móvil (2.8s)
+
+
+  1) tests\e2e\tasks.spec.ts:4:1 › crear, recargar, buscar y comprobar diseño móvil ────────────────
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 1
+    + Received  + 3
+
+    - Array []
+    + Array [
+    +   "Failed to load resource: the server responded with a status of 404 (Not Found)",
+    + ]
+
+      31 |   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+      32 |   await page.screenshot({path:`${evidence}/mobile.png`,fullPage:true});
+    > 33 |   expect(errors).toEqual([]);writeFileSync(`${evidence}/consola-navegador.json`,JSON.stringify(errors));
+         |                  ^
+      34 | });
+      35 |
+        at C:\Users\Agus\Documents\ChatGPT\Generacion T\tests\e2e\tasks.spec.ts:33:18
+
+    Error Context: test-results\tasks-crear-recargar-buscar-y-comprobar-diseño-móvil\error-context.md
+
+  1 failed
+    tests\e2e\tasks.spec.ts:4:1 › crear, recargar, buscar y comprobar diseño móvil ─────────────────

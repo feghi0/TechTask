@@ -1,0 +1,22 @@
+{
+  "method": "POST",
+  "url": "http://127.0.0.1:5180/api/tasks",
+  "status": 201,
+  "statusText": "Created",
+  "response": {
+    "data": {
+      "title": "TP de Redes - API",
+      "subject": "Redes",
+      "status": "pending",
+      "priority": "high",
+      "isFavorite": false,
+      "id": "d3470d2a-c632-4bfc-ad02-844faa80ae2f",
+      "createdAt": "2026-11-16T17:18:53.484Z"
+    }
+  },
+  "request": {
+    "title": "TP de Redes - API",
+    "subject": "Redes",
+    "priority": "high"
+  }
+}

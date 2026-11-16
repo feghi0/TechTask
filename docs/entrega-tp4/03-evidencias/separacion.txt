@@ -1,0 +1,1 @@
+PASS: sin acceso a SQLite, repositorios ni localStorage en frontend.

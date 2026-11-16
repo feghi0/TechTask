@@ -1,0 +1,16 @@
+﻿{
+    "method":  "POST",
+    "url":  "http://127.0.0.1:3001/api/tasks",
+    "status":  201,
+    "response":  {
+                     "data":  {
+                                  "title":  "TP de Redes - API",
+                                  "subject":  "Redes",
+                                  "status":  "pending",
+                                  "priority":  "high",
+                                  "isFavorite":  false,
+                                  "id":  "b261450f-c519-4a37-8ac5-f7a3be8f4c38",
+                                  "createdAt":  "2026-11-16T17:17:52.521Z"
+                              }
+                 }
+}

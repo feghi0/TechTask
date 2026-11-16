@@ -1,0 +1,22 @@
+{
+  "request": {
+    "title": "Informe de redes 1794848867230",
+    "subject": "Redes",
+    "description": "Evidencia real de creación desde React.",
+    "priority": "medium",
+    "isFavorite": true
+  },
+  "status": 201,
+  "response": {
+    "data": {
+      "title": "Informe de redes 1794848867230",
+      "subject": "Redes",
+      "description": "Evidencia real de creación desde React.",
+      "status": "pending",
+      "priority": "medium",
+      "isFavorite": true,
+      "id": "e5232040-799b-4286-a8ad-b4d8a432dbe1",
+      "createdAt": "2026-11-16T17:07:47.550Z"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+TechTask/
+├── frontend/
+│   ├── public/
+│   │   └── favicon.svg
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── TaskCard.tsx
+│   │   │   └── TaskForm.tsx
+│   │   ├── hooks/
+│   │   │   └── useTasks.ts
+│   │   ├── services/
+│   │   │   └── tasks.ts
+│   │   ├── utils/
+│   │   │   └── dates.ts
+│   │   ├── App.tsx
+│   │   ├── main.tsx
+│   │   └── style.css
+│   └── index.html
+└── backend/
+    └── src/
+        ├── controllers/
+        │   └── task-controller.ts
+        ├── middleware/
+        │   └── errors.ts
+        ├── repositories/
+        │   └── task-repository.ts
+        ├── services/
+        │   └── task-service.ts
+        ├── app.ts
+        └── server.ts
