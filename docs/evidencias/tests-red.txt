@@ -1,0 +1,126 @@
+
+> techtask@1.0.0 test
+> vitest run tests/tasks.test.ts
+
+
+ RUN  v5.1.0 C:/Users/Agus/Documents/ChatGPT/Generacion T
+
+ ❯ tests/tasks.test.ts (36 tests | 36 failed) 398ms
+   ❯ Autenticación y cuentas privadas (6)
+     × requiere sesión y nunca devuelve contraseñas 118ms
+     × normaliza correo y configura cookie HttpOnly/SameSite 12ms
+     × login correcto, contraseña incorrecta y logout invalidan sesión 12ms
+     × rechaza correo duplicado y contraseña corta 6ms
+     × rechaza mutaciones desde un origen externo 11ms
+     × aísla proyectos y tareas de otra cuenta 8ms
+   ❯ Contratos, validación y proyectos (20)
+     × crea proyecto y tarea pendiente con campos del servidor 9ms
+     × rechaza título con 2 caracteres 5ms
+     × rechaza título con 61 caracteres 14ms
+     × acepta límite de 3 caracteres 9ms
+     × acepta límite de 60 caracteres 7ms
+     × cuenta Unicode igual que PostgreSQL y devuelve 400, no 500 5ms
+     × rechaza entrada inválida {"subject":""} 9ms
+     × rechaza entrada inválida {"subject":"  "} 5ms
+     × rechaza entrada inválida {"priority":"urgent"} 9ms
+     × rechaza entrada inválida {"isFavorite":"yes"} 5ms
+     × rechaza entrada inválida {"dueDate":"2026-02-30"} 5ms
+     × rechaza entrada inválida {"dueDate":"2026-11-16T00:00:00Z"} 10ms
+     × rechaza entrada inválida {"id":"inyectado"} 6ms
+     × rechaza entrada inválida {"createdAt":"inyectado"} 8ms
+     × rechaza entrada inválida {"status":"delivered"} 5ms
+     × rechaza estrictamente la clave desconocida __proto__ 7ms
+     × controla JSON inválido, tamaño y formato sin cerrar el servidor 8ms
+     × distingue UUID inválido y registro inexistente 8ms
+     × edita con versión y rechaza versión obsoleta 10ms
+     × edita proyecto y elimina solamente proyectos vacíos 7ms
+   ❯ Estados, dependencias y concurrencia (8)
+     × impide saltar pendiente a entregada y registra transiciones válidas 7ms
+     × rechaza dependencia propia, duplicada y de otro proyecto 6ms
+     × detecta ciclos indirectos A→B→C→A 8ms
+     × bloquea entrega pendiente, permite resolverla y protege reapertura 5ms
+     × no agrega dependencias a tareas entregadas 7ms
+     × protege referenciadas y entregadas; elimina tareas permitidas 6ms
+     × dos ediciones simultáneas no sobrescriben silenciosamente 5ms
+     × dos enlaces concurrentes no pueden crear un ciclo 8ms
+   ❯ Cálculos y persistencia (2)
+     × proyecto vacío tiene progreso cero; conflictos requieren tres tareas 6ms
+     × proyectos y tareas persisten al cerrar/reabrir PostgreSQL local 6ms
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tasks.test.ts [ tests/tasks.test.ts ]
+TypeError: context?.close is not a function
+ ❯ tests/tasks.test.ts:39:39
+     37| beforeAll(async () => { context = await createApp({ dataDir: 'memory:/…
+     38| beforeEach(async () => { actor = await account(); });
+     39| afterAll(async () => { await context?.close(); });
+       |                                       ^
+     40|
+     41| describe('Autenticación y cuentas privadas', () => {
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/37]⎯
+
+
+⎯⎯⎯⎯⎯⎯ Failed Tests 36 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tasks.test.ts > Autenticación y cuentas privadas > requiere sesión y nunca devuelve contraseñas
+ FAIL  tests/tasks.test.ts > Autenticación y cuentas privadas > normaliza correo y configura cookie HttpOnly/SameSite
+ FAIL  tests/tasks.test.ts > Autenticación y cuentas privadas > login correcto, contraseña incorrecta y logout invalidan sesión
+ FAIL  tests/tasks.test.ts > Autenticación y cuentas privadas > rechaza correo duplicado y contraseña corta
+ FAIL  tests/tasks.test.ts > Autenticación y cuentas privadas > rechaza mutaciones desde un origen externo
+ FAIL  tests/tasks.test.ts > Autenticación y cuentas privadas > aísla proyectos y tareas de otra cuenta
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > crea proyecto y tarea pendiente con campos del servidor
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza título con 2 caracteres
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza título con 61 caracteres
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > acepta límite de 3 caracteres
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > acepta límite de 60 caracteres
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > cuenta Unicode igual que PostgreSQL y devuelve 400, no 500
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"subject":""}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"subject":"  "}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"priority":"urgent"}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"isFavorite":"yes"}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"dueDate":"2026-02-30"}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"dueDate":"2026-11-16T00:00:00Z"}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"id":"inyectado"}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"createdAt":"inyectado"}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza entrada inválida {"status":"delivered"}
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > rechaza estrictamente la clave desconocida __proto__
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > controla JSON inválido, tamaño y formato sin cerrar el servidor
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > distingue UUID inválido y registro inexistente
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > edita con versión y rechaza versión obsoleta
+ FAIL  tests/tasks.test.ts > Contratos, validación y proyectos > edita proyecto y elimina solamente proyectos vacíos
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > impide saltar pendiente a entregada y registra transiciones válidas
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > rechaza dependencia propia, duplicada y de otro proyecto
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > detecta ciclos indirectos A→B→C→A
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > bloquea entrega pendiente, permite resolverla y protege reapertura
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > no agrega dependencias a tareas entregadas
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > protege referenciadas y entregadas; elimina tareas permitidas
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > dos ediciones simultáneas no sobrescriben silenciosamente
+ FAIL  tests/tasks.test.ts > Estados, dependencias y concurrencia > dos enlaces concurrentes no pueden crear un ciclo
+ FAIL  tests/tasks.test.ts > Cálculos y persistencia > proyecto vacío tiene progreso cero; conflictos requieren tres tareas
+ FAIL  tests/tasks.test.ts > Cálculos y persistencia > proyectos y tareas persisten al cerrar/reabrir PostgreSQL local
+Error: expected 201 "Created", got 404 "Not Found"
+ ❯ account tests/tasks.test.ts:21:77
+     19| async function account(app = context.app) {
+     20|   const agent = request.agent(app);
+     21|   await agent.post('/api/auth/register').send({ email: email(), passwo…
+       |                                                                             ^
+     22|   return agent;
+     23| }
+ ❯ tests/tasks.test.ts:38:40
+ ❯ Test._assertStatus node_modules/supertest/lib/test.js:535:14
+ ❯ node_modules/supertest/lib/test.js:591:13
+ ❯ Test._assertFunction node_modules/supertest/lib/test.js:568:13
+ ❯ Test.assert node_modules/supertest/lib/test.js:432:23
+ ❯ localAssert node_modules/supertest/lib/test.js:382:38
+ ❯ Server.<anonymous> node_modules/supertest/lib/test.js:126:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/37]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  36 failed (36)
+   Start at  20:49:50
+   Duration  2.39s (import 54%, tests 29%, transform 16%, worker 1%)
+
