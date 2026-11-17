@@ -1,0 +1,45 @@
+
+> techtask@1.0.0 test
+> vitest run
+
+
+ RUN  v5.1.0 C:/Users/Agus/Documents/ChatGPT/Generacion T
+
+stderr | tests/tasks.test.ts > Cálculos y persistencia > controla un fallo real de almacenamiento sin exponer detalles internos
+{ name: 'Error', message: 'PGlite is closed' }
+
+stderr | tests/tasks.test.ts > Cálculos y persistencia > controla un fallo real de almacenamiento sin exponer detalles internos
+{ name: 'Error', message: 'PGlite is closed' }
+
+ ❯ tests/tasks.test.ts (45 tests | 1 failed) 23434ms
+   ❯ Cálculos y persistencia (3)
+     × controla un fallo real de almacenamiento sin exponer detalles internos 4754ms
+(node:17600) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tasks.test.ts > Cálculos y persistencia > controla un fallo real de almacenamiento sin exponer detalles internos
+Error: expected 200 "OK", got 500 "Internal Server Error"
+ ❯ tests/tasks.test.ts:548:55
+    546|       /stack|node_modules|SELECT|database is closed/i,
+    547|     );
+    548|     await request(unavailable.app).get("/api/health").expect(200);
+       |                                                       ^
+    549|   });
+    550|   it("proyecto vacío tiene progreso cero; conflictos requieren tres ta…
+ ❯ Test._assertStatus node_modules/supertest/lib/test.js:535:14
+ ❯ node_modules/supertest/lib/test.js:591:13
+ ❯ Test._assertFunction node_modules/supertest/lib/test.js:568:13
+ ❯ Test.assert node_modules/supertest/lib/test.js:432:23
+ ❯ localAssert node_modules/supertest/lib/test.js:382:38
+ ❯ Server.<anonymous> node_modules/supertest/lib/test.js:126:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 57 passed (58)
+   Start at  21:00:50
+   Duration  33.37s (tests 95%, import 5%, transform 1%)
+

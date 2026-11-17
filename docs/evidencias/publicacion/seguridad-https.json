@@ -1,0 +1,15 @@
+{
+  "url": "https://techtask-generacion-t.onrender.com",
+  "checkedAt": "2026-11-17T00:16:43.570Z",
+  "health": 200,
+  "registration": 201,
+  "session": 200,
+  "cookieFlags": {
+    "httpOnly": true,
+    "secure": true,
+    "sameSiteLax": true
+  },
+  "foreignOrigin": 403,
+  "logout": 204,
+  "revokedOriginalCookie": 401
+}

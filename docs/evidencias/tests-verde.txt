@@ -1,0 +1,15 @@
+
+> techtask@1.0.0 test
+> vitest run
+
+
+ RUN  v5.1.0 C:/Users/Agus/Documents/ChatGPT/Generacion T
+
+(node:23536) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+ Test Files  4 passed (4)
+      Tests  59 passed (59)
+   Start at  21:09:37
+   Duration  34.45s (tests 94%, import 5%)
+

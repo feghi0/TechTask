@@ -1,0 +1,41 @@
+{
+  "method": "GET",
+  "url": "https://techtask-generacion-t.onrender.com/api/tasks",
+  "status": 200,
+  "response": {
+    "data": [
+      {
+        "id": "2ecce71c-e894-4c7a-9a45-d93e3d0c488c",
+        "projectId": "1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+        "title": "Entregar TP de Redes",
+        "description": "Datos de prueba sin información personal.",
+        "subject": "Redes",
+        "status": "delivered",
+        "priority": "medium",
+        "isFavorite": true,
+        "dueDate": null,
+        "version": 4,
+        "createdAt": "2026-11-17T00:20:31.762Z",
+        "dependencyIds": [
+          "393ce7cf-b377-4d04-bc29-83952457211d"
+        ],
+        "urgency": "none"
+      },
+      {
+        "id": "393ce7cf-b377-4d04-bc29-83952457211d",
+        "projectId": "1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+        "title": "Diseñar topología",
+        "description": "Datos de prueba sin información personal.",
+        "subject": "Redes",
+        "status": "delivered",
+        "priority": "medium",
+        "isFavorite": false,
+        "dueDate": null,
+        "version": 3,
+        "createdAt": "2026-11-17T00:20:30.902Z",
+        "dependencyIds": [],
+        "urgency": "none"
+      }
+    ]
+  }
+}

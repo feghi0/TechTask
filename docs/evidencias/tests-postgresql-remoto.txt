@@ -1,0 +1,9 @@
+
+ RUN  v5.1.0 C:/Users/Agus/Documents/ChatGPT/Generacion T
+
+
+ Test Files  2 passed (2)
+      Tests  57 passed (57)
+   Start at  21:05:34
+   Duration  178.72s (tests 99%)
+

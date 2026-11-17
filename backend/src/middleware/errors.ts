@@ -16,29 +16,25 @@ export const errorHandler: ErrorRequestHandler = (
   _next,
 ) => {
   if (error instanceof AppError) {
-    res
-      .status(error.status)
-      .json({
-        error: {
-          code: error.code,
-          message: error.message,
-          ...(error.fields ? { fields: error.fields } : {}),
-        },
-      });
+    res.status(error.status).json({
+      error: {
+        code: error.code,
+        message: error.message,
+        ...(error.fields ? { fields: error.fields } : {}),
+      },
+    });
     return;
   }
   if (
     error instanceof URIError ||
     (error instanceof SyntaxError && "body" in error)
   ) {
-    res
-      .status(400)
-      .json({
-        error: {
-          code: "INVALID_REQUEST",
-          message: "La solicitud no es válida.",
-        },
-      });
+    res.status(400).json({
+      error: {
+        code: "INVALID_REQUEST",
+        message: "La solicitud no es válida.",
+      },
+    });
     return;
   }
   if (
@@ -47,14 +43,12 @@ export const errorHandler: ErrorRequestHandler = (
     "type" in error &&
     error.type === "entity.too.large"
   ) {
-    res
-      .status(413)
-      .json({
-        error: {
-          code: "PAYLOAD_TOO_LARGE",
-          message: "La solicitud es demasiado grande.",
-        },
-      });
+    res.status(413).json({
+      error: {
+        code: "PAYLOAD_TOO_LARGE",
+        message: "La solicitud es demasiado grande.",
+      },
+    });
     return;
   }
   if (
@@ -63,11 +57,9 @@ export const errorHandler: ErrorRequestHandler = (
     "code" in error &&
     error.code === "23505"
   ) {
-    res
-      .status(409)
-      .json({
-        error: { code: "DUPLICATE_RECORD", message: "El registro ya existe." },
-      });
+    res.status(409).json({
+      error: { code: "DUPLICATE_RECORD", message: "El registro ya existe." },
+    });
     return;
   }
   console.error(
@@ -75,12 +67,10 @@ export const errorHandler: ErrorRequestHandler = (
       ? { name: error.name, message: error.message }
       : "Unexpected server error",
   );
-  res
-    .status(500)
-    .json({
-      error: {
-        code: "INTERNAL_ERROR",
-        message: "No se pudo completar la operación.",
-      },
-    });
+  res.status(500).json({
+    error: {
+      code: "INTERNAL_ERROR",
+      message: "No se pudo completar la operación.",
+    },
+  });
 };

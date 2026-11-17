@@ -8,7 +8,7 @@
 | ¿Materia válida requiere catálogo? | RN02 | Ampliación innecesaria | Media | Estudiante | Resuelto: texto validado. |
 | ¿Cuál es el criterio de conflicto? | RN08 | Alertas ambiguas | Media | Estudiante | Resuelto: >=3 en ventana de 3 días, advertencia. |
 | ¿Cómo conservar SQLite existente? | RN11 | Pérdida de datos | Alta | Backend/root | Resuelto: respaldo sin modificar origen e importación explícita a cuenta autenticada. |
-| ¿Hay acceso conectado a hosting/base? | Despliegue | No obtener URL pública verificable | Alta | Titular de cuentas | Pendiente de conexión de Neon y Render; no bloquea implementación local. |
+| ¿Hay acceso conectado a hosting/base? | Despliegue | No obtener URL pública verificable | Alta | Titular de cuentas | Resuelto: conexiones verificadas, servicio publicado y probado por HTTPS. |
 | ¿Qué valoración personal hará el estudiante? | Informe | Atribuir opiniones ajenas | Baja | Estudiante | Pendiente de aporte personal; conclusiones técnicas sí pueden documentarse. |
 
 No quedan reglas ambiguas del alcance implementable que requieran una nueva aprobación funcional. Acceso externo y reflexión personal no se reemplazan por supuestos. Las decisiones técnicas autónomas quedan registradas y pueden revisarse ante una nueva instrucción.

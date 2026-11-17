@@ -1,0 +1,41 @@
+{
+  "method": "GET",
+  "url": "http://127.0.0.1:5173/api/tasks",
+  "status": 200,
+  "response": {
+    "data": [
+      {
+        "id": "c1f1016e-a369-4f26-b914-57c5ff47e7a6",
+        "projectId": "b4aeb723-5ef5-4c95-a194-2e670d61e8bc",
+        "title": "Entregar TP de Redes",
+        "description": "Datos de prueba sin información personal.",
+        "subject": "Redes",
+        "status": "delivered",
+        "priority": "medium",
+        "isFavorite": true,
+        "dueDate": null,
+        "version": 4,
+        "createdAt": "2026-11-17T00:07:42.520Z",
+        "dependencyIds": [
+          "8b77ca97-b965-43be-bf06-21504eb0d4b7"
+        ],
+        "urgency": "none"
+      },
+      {
+        "id": "8b77ca97-b965-43be-bf06-21504eb0d4b7",
+        "projectId": "b4aeb723-5ef5-4c95-a194-2e670d61e8bc",
+        "title": "Diseñar topología",
+        "description": "Datos de prueba sin información personal.",
+        "subject": "Redes",
+        "status": "delivered",
+        "priority": "medium",
+        "isFavorite": false,
+        "dueDate": null,
+        "version": 3,
+        "createdAt": "2026-11-17T00:07:41.972Z",
+        "dependencyIds": [],
+        "urgency": "none"
+      }
+    ]
+  }
+}

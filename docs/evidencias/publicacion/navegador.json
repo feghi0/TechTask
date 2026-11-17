@@ -1,0 +1,184 @@
+{
+  "viewportDesktop": "1600x1050",
+  "viewportMobile": "390x844",
+  "browser": "Edge local / Chromium CI",
+  "pageErrors": [],
+  "responses": [
+    {
+      "method": "GET",
+      "path": "/api/auth/me",
+      "status": 401
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/register",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2/tasks",
+      "status": 400
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2/tasks",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2/tasks",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/history",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/dependencies",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/status",
+      "status": 409
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/393ce7cf-b377-4d04-bc29-83952457211d/history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/tasks/393ce7cf-b377-4d04-bc29-83952457211d/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/393ce7cf-b377-4d04-bc29-83952457211d/history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/tasks/393ce7cf-b377-4d04-bc29-83952457211d/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/393ce7cf-b377-4d04-bc29-83952457211d/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/history",
+      "status": 200
+    },
+    {
+      "method": "PATCH",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/status",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/tasks/2ecce71c-e894-4c7a-9a45-d93e3d0c488c/history",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/auth/me",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects/1d5f2167-e0b2-412f-b177-3517f90cc7a2",
+      "status": 200
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/logout",
+      "status": 204
+    },
+    {
+      "method": "POST",
+      "path": "/api/auth/register",
+      "status": 201
+    },
+    {
+      "method": "GET",
+      "path": "/api/projects",
+      "status": 200
+    }
+  ],
+  "expectedNegativeResponse": "409 en entrega con dependencia pendiente"
+}

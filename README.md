@@ -5,7 +5,7 @@ Gestión privada de proyectos técnicos y entregas escolares. Proyecto Final de 
 **Autor:** Agustín Manteiga · sexto año de Computación · Escuela Técnica N.º 35 «Ing. Eduardo Latzina» · Prácticas Profesionalizantes. Trabajo individual desarrollado mediante metodología AI-First, con decisiones aprobadas y pruebas reales.
 
 Repositorio: https://github.com/feghi0/TechTask  
-URL pública: consultar `docs/publicacion.md` para el enlace y el estado verificado. No se utiliza un enlace inventado mientras el despliegue está pendiente.
+Aplicación pública: **https://techtask-generacion-t.onrender.com**. Ver `docs/publicacion.md` para configuración y comprobaciones.
 
 ## Problema y funcionalidades
 
@@ -24,11 +24,11 @@ No hay colaboración entre cuentas, chat, adjuntos, recuperación de contraseña
 
 La tarea se crea pendiente. Para entregar debe estar en desarrollo y tener sus dependencias entregadas. No se puede reabrir un requisito si deja inconsistente una tarea entregada. Quitar una dependencia válida no altera el estado; agregar requisitos a una entregada requiere reabrirla. No se elimina una tarea entregada o con dependientes activos; la baja es lógica. Proyecto solo se elimina si no tiene tareas activas.
 
-Título: 3–60 puntos Unicode luego de trim. Materia: texto obligatorio, no catálogo institucional. Urgencia en calendario argentino: vencida si la fecha pasó; inmediata hasta3 días inclusive; próxima de4 a7; entregadas excluidas. Tres tareas no entregadas dentro de tres días calendario generan advertencia en el proyecto. Progreso se calcula, no se duplica en base. La SPEC define límites y casos completos.
+Título: 3–60 puntos Unicode luego de trim. Materia: texto obligatorio, no catálogo institucional. Urgencia en calendario argentino: vencida si la fecha pasó; inmediata hasta 3 días inclusive; próxima de 4 a 7; entregadas excluidas. Tres tareas no entregadas dentro de tres días calendario generan advertencia en el proyecto. Progreso se calcula, no se duplica en base. La SPEC define límites y casos completos.
 
 ## Stack y arquitectura
 
-React19, TypeScript estricto, Vite, Tailwind y Lucide. Node22/Express con Controller → Service → Repository y PostgreSQL parametrizado. Sesiones opacas, contraseñas con scrypt/salt y cookie HttpOnly. PGlite ejecuta PostgreSQL embebido para inicio local y tests sin servidor instalado; producción usa pg y DATABASE_URL externa.
+React 19, TypeScript estricto, Vite, Tailwind y Lucide. Node 22/Express con Controller → Service → Repository y PostgreSQL parametrizado. Sesiones opacas, contraseñas con scrypt/salt y cookie HttpOnly. PGlite ejecuta PostgreSQL embebido para inicio local y tests sin servidor instalado; producción usa pg y DATABASE_URL externa.
 
 ```text
 frontend/src/   componentes, hooks y cliente HTTP
@@ -42,14 +42,14 @@ docs/entrega-tp4/ antecedentes y evidencia histórica
 
 ## Inicio local
 
-Requisitos: Node22.21.0 o compatible y npm. No requiere instalar PostgreSQL ni Docker para el modo local.
+Requisitos: Node 22.21.0 o compatible y npm. No requiere instalar PostgreSQL ni Docker para el modo local.
 
 ```sh
 npm ci
 npm run dev
 ```
 
-Abrir http://127.0.0.1:5173. Crear una cuenta con correo de ejemplo y contraseña propia de12–128 caracteres. API http://127.0.0.1:3001; health `/api/health`. El directorio `data/postgres` conserva datos entre inicios; no lo borres si querés conservarlos. Ctrl+C detiene ambos servidores. Nunca abrir dos procesos PGlite sobre el mismo directorio.
+Abrir http://127.0.0.1:5173. Crear una cuenta con correo de ejemplo y contraseña propia de 12–128 caracteres. API http://127.0.0.1:3001; health `/api/health`. El directorio `data/postgres` conserva datos entre inicios; no lo borres si querés conservarlos. Ctrl+C detiene ambos servidores. Nunca abrir dos procesos PGlite sobre el mismo directorio.
 
 El archivo `.env.example` documenta configuración. Variables deben exportarse en la terminal o configurarse en el proveedor; el servidor no carga automáticamente `.env`.
 
@@ -57,7 +57,7 @@ El archivo `.env.example` documenta configuración. Variables deben exportarse e
 |---|---|
 | DATABASE_URL | Conexión PostgreSQL; obligatoria en producción. Secreto, solo backend. |
 | PGLITE_DATA_DIR | Directorio local, por defecto data/postgres. Ignorado si existe DATABASE_URL. |
-| PORT / HOST | Puerto y host;3001/127.0.0.1 local, puerto del proveedor y0.0.0.0 productivo. |
+| PORT / HOST | Puerto y host;3001/127.0.0.1 local, puerto del proveedor y 0.0.0.0 productivo. |
 | NODE_ENV | production activa cookies Secure, proxy y frontend compilado. |
 | ALLOWED_ORIGINS | Orígenes adicionales exactos separados por coma. Vacío en producción: mismo origen. |
 | TEST_DATABASE_URL | Base exclusivamente de pruebas para batería contra servidor PostgreSQL. |
@@ -93,9 +93,9 @@ npm run build
 
 Vitest/Supertest verifica reglas e integración con PostgreSQL embebido, sesiones privadas, grafo, concurrencia, persistencia e importación. `TEST_DATABASE_URL` permite ejecutar las pruebas de HTTP contra una base de servidor aislada. Nunca apuntar tests a datos productivos. El ejecutor `scripts/test-postgres-remote.mjs` restringe explícitamente el nombre techtask_test y recibe la conexión por stdin oculto.
 
-Playwright usa Edge instalado en Windows y Chromium en CI. En Linux CI: `npx playwright install --with-deps chromium`. Los e2e crean directorios de base independientes y cuentas ficticias, y conservan capturas reales. Cerrar servidores que ocupen3001/5173 antes. Los tests TP4 originales están preservados como texto en tests/legacy y en el commit de base; no se ejecutan contra contratos privados incompatibles.
+Playwright usa Edge instalado en Windows y Chromium en CI. En Linux CI: `npx playwright install --with-deps chromium`. Los e2e crean directorios de base independientes y cuentas ficticias, y conservan capturas reales. Cerrar servidores que ocupen 3001/5173 antes. Los tests TP4 originales están preservados como texto en tests/legacy y en el commit de base; no se ejecutan contra contratos privados incompatibles.
 
-La configuración CI ejecuta integración con servicio PostgreSQL16 y navegador. Consultar ejecuciones reales y logs; que exista el workflow no implica que haya pasado.
+La configuración CI ejecuta integración con servicio PostgreSQL 16 y navegador. Consultar ejecuciones reales y logs; que exista el workflow no implica que haya pasado.
 
 ## Compilar y desplegar
 

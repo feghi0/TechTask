@@ -1,0 +1,12 @@
+[
+  {
+    "url": "https://github.com/feghi0/TechTask/actions/runs/43985660035",
+    "title": "fix(T13): support clean CI checkout and wait for rendered mutation state · feghi0/TechTask@1285e23 · GitHub",
+    "text": "Skip to content\nNavigation Menu\nProducts\nDevelopers\nBusinesses\nResources\nPricing\nSearch\n/\nSign in\nSign up\nfeghi0\nTechTask\nRepository navigation\nCode\nIssues\nPull requests\nActions\nProjects\nSecurity and quality\nInsights\nTechTask verification\nfix(T13): support clean CI checkout and wait for rendered mutation state #2\nSign in to view logs\nTriggered via push \nfeghi0\npushed\n 1285e23\nmain\nStatus\nSuccess\nTotal duration\n55s\nArtifacts\n1\nci.yml\non: push\npostgres\n51s\nbrowser\n42s\n\nOh hello! Nice to see you.\n\nMade with ❤️ by humans.txt\n\nAnnotations\n2 warnings and 2 notices\nbrowser\nNode.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/\nShow more\n\n\npostgres\nNode.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/\nShow more\n\n\nbrowser\n\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"\n\n\npostgres\n\"The ubuntu-latest label will migrate to Ubuntu 26 beginning October 19, 2026. For more information, see https://github.com/actions/runner-images/issues/14748\"\nArtifacts\nProduced during runtime\nName\tSize\tDigest\t\n\nbrowser-evidence\n\t1010 KB\t\nsha256:f9469c097ba5a0610b8570b0399b796c11ae9479eb794ea49e0d0b680b2fc0a5\n\t"
+  },
+  {
+    "url": "https://techtask-generacion-t.onrender.com/",
+    "title": "TechTask — Mis tareas",
+    "loginVisible": true
+  }
+]

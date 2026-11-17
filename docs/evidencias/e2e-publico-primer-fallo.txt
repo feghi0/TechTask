@@ -1,0 +1,40 @@
+
+> techtask@1.0.0 test:e2e
+> playwright test
+
+
+Running 1 test using 1 worker
+
+(node:1432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\final.spec.ts:29:1 › cuentas privadas, dependencias, entrega protegida, progreso y persistencia (9.6s)
+
+
+  1) tests\e2e\final.spec.ts:29:1 › cuentas privadas, dependencias, entrega protegida, progreso y persistencia 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 409
+    Received: 200
+
+      134 |     .click();
+      135 |   expect((await changeState(page, "in_progress")).status()).toBe(200);
+    > 136 |   expect((await changeState(page, "delivered")).status()).toBe(409);
+          |                                                           ^
+      137 |   await expect(page.getByRole("alert")).toBeVisible();
+      138 |   await page.screenshot({
+      139 |     path: `${evidence}/03-entrega-bloqueada.png`,
+        at C:\Users\Agus\Documents\ChatGPT\Generacion T\tests\e2e\final.spec.ts:136:59
+
+    Error Context: test-results\final-cuentas-privadas-dep-e8efb-ida-progreso-y-persistencia\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\final-cuentas-privadas-dep-e8efb-ida-progreso-y-persistencia\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\final-cuentas-privadas-dep-e8efb-ida-progreso-y-persistencia\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\final.spec.ts:29:1 › cuentas privadas, dependencias, entrega protegida, progreso y persistencia 

@@ -1,0 +1,48 @@
+
+ RUN  v5.1.0 C:/Users/Agus/Documents/ChatGPT/Generacion T
+
+(node:7124) Warning: SECURITY WARNING: The SSL modes 'prefer', 'require', and 'verify-ca' are treated as aliases for 'verify-full'.
+In the next major version (pg-connection-string v3.0.0 and pg v9.0.0), these modes will adopt standard libpq semantics, which have weaker security guarantees.
+
+To prepare for this change:
+- If you want the current behavior, explicitly use 'sslmode=verify-full'
+- If you want libpq compatibility now, use 'uselibpqcompat=true&sslmode=require'
+
+See https://www.postgresql.org/docs/current/libpq-ssl.html for libpq SSL mode definitions.
+(Use `node --trace-warnings ...` to show where the warning was created)
+stderr | tests/tasks.test.ts > Cálculos y persistencia > controla un fallo real de almacenamiento sin exponer detalles internos
+{ name: 'Error', message: 'PGlite is closed' }
+
+stderr | tests/tasks.test.ts > Cálculos y persistencia > controla un fallo real de almacenamiento sin exponer detalles internos
+{ name: 'Error', message: 'PGlite is closed' }
+
+ ❯ tests/tasks.test.ts (45 tests | 1 failed) 181093ms
+   ❯ Cálculos y persistencia (3)
+     × controla un fallo real de almacenamiento sin exponer detalles internos 5900ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/tasks.test.ts > Cálculos y persistencia > controla un fallo real de almacenamiento sin exponer detalles internos
+Error: expected 200 "OK", got 500 "Internal Server Error"
+ ❯ tests/tasks.test.ts:548:55
+    546|       /stack|node_modules|SELECT|database is closed/i,
+    547|     );
+    548|     // Health probes check the database too: an unavailable database m…
+       |                                                       ^
+    549|     const health = await request(unavailable.app).get("/api/health").e…
+    550|     expect(health.body.error.code).toBe("INTERNAL_ERROR");
+ ❯ Test._assertStatus node_modules/supertest/lib/test.js:535:14
+ ❯ node_modules/supertest/lib/test.js:591:13
+ ❯ Test._assertFunction node_modules/supertest/lib/test.js:568:13
+ ❯ Test.assert node_modules/supertest/lib/test.js:432:23
+ ❯ localAssert node_modules/supertest/lib/test.js:382:38
+ ❯ Server.<anonymous> node_modules/supertest/lib/test.js:126:7
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 56 passed (57)
+   Start at  21:00:37
+   Duration  182.81s (tests 99%)
+

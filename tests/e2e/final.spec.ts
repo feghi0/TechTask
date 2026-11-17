@@ -2,7 +2,9 @@ import { test, expect, type Page } from "@playwright/test";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { randomBytes } from "node:crypto";
 const evidence = process.env.TT_EVIDENCE_DIR ?? "docs/evidencias";
-const password = process.env.TT_PUBLIC_URL ? randomBytes(24).toString('base64url') : "Demostracion-segura-2026";
+const password = process.env.TT_PUBLIC_URL
+  ? randomBytes(24).toString("base64url")
+  : "Demostracion-segura-2026";
 
 async function closeDialog(page: Page) {
   await page
@@ -15,21 +17,35 @@ async function openTask(page: Page, title: string) {
     .click();
 }
 async function changeState(page: Page, status: string) {
-  await expect(page.getByRole("button", { name: "Cambiar estado", exact: true })).toBeEnabled();
+  await expect(
+    page.getByRole("button", { name: "Cambiar estado", exact: true }),
+  ).toBeEnabled();
   await page
     .getByRole("combobox", { name: /^Nuevo estado/ })
     .selectOption(status);
   const response = page.waitForResponse(
-    (r) => r.request().method() === "PATCH" && r.url().endsWith("/status") && r.request().postDataJSON().status === status,
+    (r) =>
+      r.request().method() === "PATCH" &&
+      r.url().endsWith("/status") &&
+      r.request().postDataJSON().status === status,
   );
   await page
     .getByRole("button", { name: "Cambiar estado", exact: true })
     .click();
   const result = await response;
-  await expect(page.getByRole("button", { name: "Cambiar estado", exact: true })).toBeEnabled();
-  if(result.ok()) {
-    const labels:Record<string,string>={pending:'Pendiente',in_progress:'En desarrollo',blocked:'Bloqueada',delivered:'Entregada'};
-    await expect(page.getByText(`Estado actual: ${labels[status]}`,{exact:true})).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: "Cambiar estado", exact: true }),
+  ).toBeEnabled();
+  if (result.ok()) {
+    const labels: Record<string, string> = {
+      pending: "Pendiente",
+      in_progress: "En desarrollo",
+      blocked: "Bloqueada",
+      delivered: "Entregada",
+    };
+    await expect(
+      page.getByText(`Estado actual: ${labels[status]}`, { exact: true }),
+    ).toBeVisible();
   }
   return result;
 }
@@ -133,16 +149,60 @@ test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia
       page.getByRole("heading", { name: title, exact: true }),
     ).toBeVisible();
   }
+  // HU10: filtros reales sobre los datos recuperados; no alteran persistencia.
+  await page
+    .getByRole("textbox", { name: "Buscar tareas", exact: true })
+    .fill("Diseñar");
+  await expect(page.getByRole("article")).toHaveCount(1);
+  await page
+    .getByRole("textbox", { name: "Buscar tareas", exact: true })
+    .fill("sin-coincidencia");
+  await expect(
+    page.getByRole("heading", { name: "Sin coincidencias", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("textbox", { name: "Buscar tareas", exact: true })
+    .fill("");
+  await page
+    .getByRole("combobox", { name: "Estado", exact: true })
+    .selectOption("in_progress");
+  await expect(page.getByRole("article")).toHaveCount(0);
+  await page
+    .getByRole("combobox", { name: "Estado", exact: true })
+    .selectOption("");
+  await page
+    .getByRole("combobox", { name: "Materia", exact: true })
+    .selectOption("Redes");
+  await page
+    .getByRole("checkbox", { name: "Solo favoritas", exact: true })
+    .check();
+  await expect(page.getByRole("article")).toHaveCount(1);
+  await expect(
+    page.getByRole("heading", { name: "Entregar TP de Redes", exact: true }),
+  ).toBeVisible();
+  await page
+    .getByRole("checkbox", { name: "Solo favoritas", exact: true })
+    .uncheck();
+  await page
+    .getByRole("combobox", { name: "Materia", exact: true })
+    .selectOption("");
   await openTask(page, "Entregar TP de Redes");
   await page
     .getByRole("combobox", { name: /^Tarea requerida/ })
     .selectOption({ label: "Diseñar topología" });
-  const linked = page.waitForResponse(r=>r.request().method()==='POST'&&r.url().endsWith('/dependencies'));
+  const linked = page.waitForResponse(
+    (r) => r.request().method() === "POST" && r.url().endsWith("/dependencies"),
+  );
   await page
     .getByRole("button", { name: "Agregar dependencia", exact: true })
     .click();
   expect((await linked).status()).toBe(200);
-  await expect(page.getByRole('button',{name:'Quitar dependencia Diseñar topología',exact:true})).toBeVisible();
+  await expect(
+    page.getByRole("button", {
+      name: "Quitar dependencia Diseñar topología",
+      exact: true,
+    }),
+  ).toBeVisible();
   expect((await changeState(page, "in_progress")).status()).toBe(200);
   expect((await changeState(page, "delivered")).status()).toBe(409);
   await expect(page.getByRole("alert")).toBeVisible();
@@ -194,6 +254,7 @@ test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia
   await expect(apiPage.locator("body")).toContainText("Entregar TP de Redes");
   const prettyPrint = apiPage.getByRole("checkbox");
   if (await prettyPrint.count()) await prettyPrint.check();
+  else await apiPage.mouse.click(160, 10); // casilla nativa observada en la captura1600px, fuera del DOM de la app.
   writeFileSync(
     `${evidence}/api-lectura.json`,
     JSON.stringify(

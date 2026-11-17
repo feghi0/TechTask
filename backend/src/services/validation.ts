@@ -21,7 +21,8 @@ export function text(
   max: number,
 ): string {
   if (typeof value !== "string") throw invalid(`${name}: debe ser texto.`);
-  if (value.includes("\u0000")) throw invalid(`${name}: contiene un carácter no permitido.`);
+  if (value.includes("\u0000"))
+    throw invalid(`${name}: contiene un carácter no permitido.`);
   const result = value.trim();
   if ([...result].length < min || [...result].length > max)
     throw invalid(`${name}: debe tener entre ${min} y ${max} caracteres.`);

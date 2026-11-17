@@ -20,6 +20,10 @@ Fuente: chat, 16/11/2026. El usuario dijo: «apruebo totalmente y prefiero las c
 | D12 | ¿Autenticación externa compleja o sesión simple? | Sesiones propias con cookie HttpOnly y derivación scrypt, sin JWT en localStorage. | Sin recuperación de contraseña en este alcance; no usar como sistema institucional. |
 | D13 | ¿Cómo probar sin servidor PostgreSQL instalado? | PGlite, motor PostgreSQL embebido, no una simulación SQL. | Pruebas locales reproducibles; validación adicional remota sigue siendo necesaria. |
 | D14 | ¿Frontend separado o mismo origen? | Soportar ambos; preferir Express sirviendo build React para primera publicación. | Menos configuración; CORS con allowlist exacta para origen separado. |
-| D15 | ¿Proveedores? | Render para app, Neon para PostgreSQL; propuesta técnica, acceso aún por verificar. Netlify opcional para frontend separado. | No publicar enlaces inexistentes ni contratar servicios pagos sin permiso. |
+| D15 | ¿Proveedores? | Render para app, Neon para PostgreSQL; elección técnica implementada, conexión y publicación verificadas. Netlify opcional para frontend separado. | No publicar enlaces inexistentes ni contratar servicios pagos sin permiso. |
 
 La sesión TP4 registró antes la elección de SQLite integrado mediante «a». Esa decisión se conserva como antecedente y se reemplaza para el Proyecto Final con la aprobación posterior de PostgreSQL. No se altera retrospectivamente el informe TP4.
+
+## Ajustes técnicos autónomos registrados
+
+D16: body 128KB permite 10000 puntos Unicode astrales dentro del contrato, con prueba de límite 413. D17: rechazar U+0000 antes de PostgreSQL evita500 por entrada inválida. D18: crear directorio local recursivamente permite checkout limpio en Linux. D19: retirar una dependencia válida se admite incluso de entregada y conserva su estado; solo agregar nuevos requisitos exige reabrir. Son precisiones del contrato ya documentado, verificadas por tests y revisión.

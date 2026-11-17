@@ -1,0 +1,831 @@
+postgres	Set up job	﻿2026-11-17T00:12:00.5268936Z Current runner version: '2.338.2'
+postgres	Set up job	2026-11-17T00:12:00.5298350Z ##[group]Runner Image Provisioner
+postgres	Set up job	2026-11-17T00:12:00.5299369Z Hosted Compute Agent
+postgres	Set up job	2026-11-17T00:12:00.5300140Z Version: 20261103.629
+postgres	Set up job	2026-11-17T00:12:00.5300970Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+postgres	Set up job	2026-11-17T00:12:00.5301893Z Build Date: 2026-11-03T17:26:59Z
+postgres	Set up job	2026-11-17T00:12:00.5302896Z Worker ID: {3e1c5f99-3746-4cc7-b5f8-7b9fdaf8b570}
+postgres	Set up job	2026-11-17T00:12:00.5303782Z Region: eastus2
+postgres	Set up job	2026-11-17T00:12:00.5304702Z Cloud: Azure
+postgres	Set up job	2026-11-17T00:12:00.5305421Z ##[endgroup]
+postgres	Set up job	2026-11-17T00:12:00.5306916Z ##[group]Operating System
+postgres	Set up job	2026-11-17T00:12:00.5307825Z Ubuntu
+postgres	Set up job	2026-11-17T00:12:00.5308500Z 26.04.1
+postgres	Set up job	2026-11-17T00:12:00.5309091Z LTS
+postgres	Set up job	2026-11-17T00:12:00.5309846Z ##[endgroup]
+postgres	Set up job	2026-11-17T00:12:00.5310534Z ##[group]Runner Image
+postgres	Set up job	2026-11-17T00:12:00.5311870Z Image: ubuntu-26.04
+postgres	Set up job	2026-11-17T00:12:00.5312606Z Version: 20261111.196.1
+postgres	Set up job	2026-11-17T00:12:00.5313974Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+postgres	Set up job	2026-11-17T00:12:00.5316460Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+postgres	Set up job	2026-11-17T00:12:00.5317791Z ##[endgroup]
+postgres	Set up job	2026-11-17T00:12:00.5319227Z ##[group]GITHUB_TOKEN Permissions
+postgres	Set up job	2026-11-17T00:12:00.5321539Z Contents: read
+postgres	Set up job	2026-11-17T00:12:00.5322263Z Metadata: read
+postgres	Set up job	2026-11-17T00:12:00.5322914Z Packages: read
+postgres	Set up job	2026-11-17T00:12:00.5323722Z ##[endgroup]
+postgres	Set up job	2026-11-17T00:12:00.5326285Z Secret source: Actions
+postgres	Set up job	2026-11-17T00:12:00.5327550Z Cache mode: write
+postgres	Set up job	2026-11-17T00:12:00.5328786Z Prepare workflow directory
+postgres	Set up job	2026-11-17T00:12:00.5818109Z Prepare all required actions
+postgres	Set up job	2026-11-17T00:12:00.5875269Z Getting action download info
+postgres	Set up job	2026-11-17T00:12:00.7663237Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+postgres	Set up job	2026-11-17T00:12:00.8597138Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+postgres	Set up job	2026-11-17T00:12:01.0637846Z Complete job name: postgres
+postgres	Initialize containers	﻿2026-11-17T00:12:01.1127146Z ##[group]Checking docker version
+postgres	Initialize containers	2026-11-17T00:12:01.1137800Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+postgres	Initialize containers	2026-11-17T00:12:01.2155045Z '1.54'
+postgres	Initialize containers	2026-11-17T00:12:01.2166377Z Docker daemon API version: '1.54'
+postgres	Initialize containers	2026-11-17T00:12:01.2167051Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+postgres	Initialize containers	2026-11-17T00:12:01.2321996Z '1.54'
+postgres	Initialize containers	2026-11-17T00:12:01.2335548Z Docker client API version: '1.54'
+postgres	Initialize containers	2026-11-17T00:12:01.2340219Z ##[endgroup]
+postgres	Initialize containers	2026-11-17T00:12:01.2342783Z ##[group]Clean up resources from previous jobs
+postgres	Initialize containers	2026-11-17T00:12:01.2347553Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=eb96b4"
+postgres	Initialize containers	2026-11-17T00:12:01.2495615Z ##[command]/usr/bin/docker network prune --force --filter "label=eb96b4"
+postgres	Initialize containers	2026-11-17T00:12:01.2630389Z ##[endgroup]
+postgres	Initialize containers	2026-11-17T00:12:01.2630892Z ##[group]Create local container network
+postgres	Initialize containers	2026-11-17T00:12:01.2639501Z ##[command]/usr/bin/docker network create --label eb96b4 github_network_2cea05a15c5c468ebe3d6ad5066cf68d
+postgres	Initialize containers	2026-11-17T00:12:01.3187015Z 0505a3a5b73f7e8604136df823ca192f4f218bf053f91d5ef7f9eb3894959f92
+postgres	Initialize containers	2026-11-17T00:12:01.3204843Z ##[endgroup]
+postgres	Initialize containers	2026-11-17T00:12:01.3225441Z ##[group]Starting postgres service container
+postgres	Initialize containers	2026-11-17T00:12:01.3242651Z ##[command]/usr/bin/docker pull postgres:16
+postgres	Initialize containers	2026-11-17T00:12:01.6037864Z 16: Pulling from library/postgres
+postgres	Initialize containers	2026-11-17T00:12:01.7181689Z c21dabdd3f40: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7184951Z 5dd91dbc2342: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7188691Z d38145328f88: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7189728Z 0c67d4a9f067: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7190863Z 6a7048238f16: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7191833Z 37fb86c2a767: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7192878Z e9b9c168b556: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7193866Z 373818e56554: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7194881Z 0b80e0833f2d: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7195622Z 6f1f66ad722a: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7196342Z d8948f3622f7: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7197203Z 8fe89564ad07: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7197837Z ea97cbaeb613: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.7198404Z 3dcaae3150c1: Pulling fs layer
+postgres	Initialize containers	2026-11-17T00:12:01.8404732Z 8fe89564ad07: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8406279Z d38145328f88: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8410189Z 0c67d4a9f067: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8425311Z c21dabdd3f40: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8435868Z e9b9c168b556: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8450303Z ea97cbaeb613: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8454974Z 5dd91dbc2342: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8461026Z d8948f3622f7: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8465317Z 6a7048238f16: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.8466493Z 0b80e0833f2d: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.9402712Z 373818e56554: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.9404138Z 6f1f66ad722a: Download complete
+postgres	Initialize containers	2026-11-17T00:12:01.9405453Z 6ae229981968: Download complete
+postgres	Initialize containers	2026-11-17T00:12:02.1427908Z 37fb86c2a767: Download complete
+postgres	Initialize containers	2026-11-17T00:12:02.1432765Z c6e7de97efe2: Download complete
+postgres	Initialize containers	2026-11-17T00:12:03.0487262Z 37fb86c2a767: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:03.2388688Z 3dcaae3150c1: Download complete
+postgres	Initialize containers	2026-11-17T00:12:03.2446368Z e9b9c168b556: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:03.2500117Z 373818e56554: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:03.3498651Z 0b80e0833f2d: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:03.4439390Z ea97cbaeb613: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:03.4452751Z d8948f3622f7: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:03.4479416Z 6a7048238f16: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:03.4493147Z 6f1f66ad722a: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:05.1441748Z 3dcaae3150c1: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:05.2202419Z 8fe89564ad07: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:05.2216907Z d38145328f88: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:05.2225657Z 0c67d4a9f067: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:05.2235120Z c21dabdd3f40: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:05.2251204Z 5dd91dbc2342: Pull complete
+postgres	Initialize containers	2026-11-17T00:12:05.2252101Z Digest: sha256:dd2bf3ce2dc83a81674cf7f217fcfd8a5009a4b325dda5b843bfee82a06cff6f
+postgres	Initialize containers	2026-11-17T00:12:05.2253396Z Status: Downloaded newer image for postgres:16
+postgres	Initialize containers	2026-11-17T00:12:05.2259095Z docker.io/library/postgres:16
+postgres	Initialize containers	2026-11-17T00:12:05.2341933Z ##[command]/usr/bin/docker create --name 832aac93ff5e42c19c029ba18b9c30c7_postgres16_a920f7 --label eb96b4 --network github_network_2cea05a15c5c468ebe3d6ad5066cf68d --network-alias postgres -p 5432:5432 --health-cmd "pg_isready -U techtask_test" --health-interval 10s --health-timeout 5s --health-retries 5 -e "POSTGRES_USER=techtask_test" -e "POSTGRES_PASSWORD=ci_disposable_password" -e "POSTGRES_DB=techtask_test" -e GITHUB_ACTIONS=true -e CI=true postgres:16
+postgres	Initialize containers	2026-11-17T00:12:09.2158663Z df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:09.2182076Z ##[command]/usr/bin/docker start df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:09.4180174Z df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:09.4219464Z ##[command]/usr/bin/docker ps --all --filter id=df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+postgres	Initialize containers	2026-11-17T00:12:09.4477667Z df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd Up Less than a second (health: starting)
+postgres	Initialize containers	2026-11-17T00:12:09.4522538Z ##[command]/usr/bin/docker port df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:09.4654218Z 5432/tcp -> 0.0.0.0:5432
+postgres	Initialize containers	2026-11-17T00:12:09.4666802Z 5432/tcp -> [::]:5432
+postgres	Initialize containers	2026-11-17T00:12:09.4697405Z ##[endgroup]
+postgres	Initialize containers	2026-11-17T00:12:09.4704164Z ##[group]Waiting for all services to be ready
+postgres	Initialize containers	2026-11-17T00:12:09.4715495Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:09.4841744Z starting
+postgres	Initialize containers	2026-11-17T00:12:09.4861014Z postgres service is starting, waiting 2 seconds before checking again.
+postgres	Initialize containers	2026-11-17T00:12:11.4860979Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:11.4981080Z starting
+postgres	Initialize containers	2026-11-17T00:12:11.4994411Z postgres service is starting, waiting 4 seconds before checking again.
+postgres	Initialize containers	2026-11-17T00:12:15.6913514Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:15.7038413Z starting
+postgres	Initialize containers	2026-11-17T00:12:15.7051815Z postgres service is starting, waiting 8 seconds before checking again.
+postgres	Initialize containers	2026-11-17T00:12:24.5452778Z ##[command]/usr/bin/docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Initialize containers	2026-11-17T00:12:24.5577005Z healthy
+postgres	Initialize containers	2026-11-17T00:12:24.5593961Z postgres service is healthy.
+postgres	Initialize containers	2026-11-17T00:12:24.5594751Z ##[endgroup]
+postgres	Run actions/checkout@v4	﻿2026-11-17T00:12:24.5820207Z ##[group]Run actions/checkout@v4
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5820639Z with:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5820815Z   repository: feghi0/TechTask
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5822942Z   token: ***
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5823118Z   ssh-strict: true
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5823294Z   ssh-user: git
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5823468Z   persist-credentials: true
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5823656Z   clean: true
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5823828Z   sparse-checkout-cone-mode: true
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5824028Z   fetch-depth: 1
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5824192Z   fetch-tags: false
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5824526Z   show-progress: true
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5824703Z   lfs: false
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5824860Z   submodules: false
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5825029Z   set-safe-directory: true
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5825224Z   allow-unsafe-pr-checkout: false
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5825575Z env:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5825984Z   TEST_DATABASE_URL: ***127.0.0.1:5432/techtask_test
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.5826227Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8562010Z Syncing repository: feghi0/TechTask
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8563376Z ##[group]Getting Git version info
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8563705Z Working directory is '/home/runner/work/TechTask/TechTask'
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8564149Z [command]/usr/bin/git version
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8564570Z git version 2.56.1
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8565249Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8572118Z Temporarily overriding HOME='/home/runner/work/_temp/d807f0e8-2429-44ad-9129-ec66ea57da0d' before making global git config changes
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8572857Z Adding repository directory to the temporary git global config as a safe directory
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8576668Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TechTask/TechTask
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8637698Z Deleting the contents of '/home/runner/work/TechTask/TechTask'
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8638497Z ##[group]Initializing the repository
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8642956Z [command]/usr/bin/git init /home/runner/work/TechTask/TechTask
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8741288Z hint: Using 'master' as the name for the initial branch. This default branch name
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8741989Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8742770Z hint: to use in all of your new repositories, which will suppress this warning,
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8743091Z hint: call:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8743257Z hint:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8743526Z hint: 	git config --global init.defaultBranch <name>
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8743788Z hint:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8744025Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8744568Z hint: 'development'. The just-created branch can be renamed via this command:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8744861Z hint:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8745023Z hint: 	git branch -m <name>
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8745212Z hint:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8745511Z hint: Disable this message with "git config set advice.defaultBranchName false"
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8750912Z Initialized empty Git repository in /home/runner/work/TechTask/TechTask/.git/
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8760420Z [command]/usr/bin/git remote add origin https://github.com/feghi0/TechTask
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8811347Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8811844Z ##[group]Disabling automatic garbage collection
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8813850Z [command]/usr/bin/git config --local gc.auto 0
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8841995Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8842433Z ##[group]Setting up auth
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8847668Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.8875216Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9347868Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9377037Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9610441Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9639638Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9869761Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9903197Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9903653Z ##[group]Fetching the repository
+postgres	Run actions/checkout@v4	2026-11-17T00:12:24.9910563Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1285e2354bcc821dc77540218d485783135cd7fb:refs/remotes/origin/main
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2723499Z From https://github.com/feghi0/TechTask
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2734027Z  * [new ref]         1285e2354bcc821dc77540218d485783135cd7fb -> origin/main
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2735947Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2736461Z ##[group]Determining the checkout info
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2737013Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2737374Z [command]/usr/bin/git sparse-checkout disable
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2787067Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2814721Z ##[group]Checking out the ref
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.2820476Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.3091647Z Switched to a new branch 'main'
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.3097475Z branch 'main' set up to track 'origin/main'.
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.3103717Z ##[endgroup]
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.3147346Z [command]/usr/bin/git log -1 --format=%H
+postgres	Run actions/checkout@v4	2026-11-17T00:12:25.3169682Z 1285e2354bcc821dc77540218d485783135cd7fb
+postgres	Run actions/setup-node@v4	﻿2026-11-17T00:12:25.3388460Z ##[group]Run actions/setup-node@v4
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3388693Z with:
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3388855Z   node-version: 22.21.0
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3389030Z   cache: npm
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3389202Z   always-auth: false
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3389376Z   check-latest: false
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3391412Z   token: ***
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3391574Z env:
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3391984Z   TEST_DATABASE_URL: ***127.0.0.1:5432/techtask_test
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.3392225Z ##[endgroup]
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.4528761Z Attempting to download 22.21.0...
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.4654795Z (node:2606) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:25.4655456Z (Use `node --trace-deprecation ...` to show where the warning was created)
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:26.0029307Z Acquiring 22.21.0 - x64 from https://github.com/actions/node-versions/releases/download/22.21.0-18671149699/node-22.21.0-linux-x64.tar.gz
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:26.5654989Z Extracting ...
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:26.5753035Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/2121cb90-a646-4eec-8416-6a3882b0ce82 -f /home/runner/work/_temp/56653326-61b7-4b45-abe7-80a535342226
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:27.2194517Z Adding to the cache ...
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.3085521Z ##[group]Environment details
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.5073424Z node: v22.21.0
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.5074209Z npm: 10.9.4
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.5074599Z yarn: 1.22.22
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.5075073Z ##[endgroup]
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.5093168Z [command]/opt/hostedtoolcache/node/22.21.0/x64/bin/npm config get cache
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.5853803Z /home/runner/.npm
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.6815215Z Cache hit for: node-cache-Linux-x64-npm-949676008295fedfabdc9c0ba4522a9f87a2f1ba864f7f25a41e5292775a7601
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:29.6887774Z (node:2606) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:30.0783518Z Received 58967895 of 58967895 (100.0%), 168.9 MBs/sec
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:30.0783934Z Cache Size: ~56 MB (58967895 B)
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:30.0881751Z [command]/usr/bin/tar -xf /home/runner/work/_temp/200c5bea-30e9-4dcb-9fea-048aece25d71/cache.tzst -P -C /home/runner/work/TechTask/TechTask --use-compress-program unzstd
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:30.1864200Z Cache restored successfully
+postgres	Run actions/setup-node@v4	2026-11-17T00:12:30.1896183Z Cache restored from key: node-cache-Linux-x64-npm-949676008295fedfabdc9c0ba4522a9f87a2f1ba864f7f25a41e5292775a7601
+postgres	Run npm ci	﻿2026-11-17T00:12:30.2090778Z ##[group]Run npm ci
+postgres	Run npm ci	2026-11-17T00:12:30.2091028Z ^[[36;1mnpm ci^[[0m
+postgres	Run npm ci	2026-11-17T00:12:30.2141457Z shell: /usr/bin/bash -e {0}
+postgres	Run npm ci	2026-11-17T00:12:30.2141693Z env:
+postgres	Run npm ci	2026-11-17T00:12:30.2142180Z   TEST_DATABASE_URL: ***127.0.0.1:5432/techtask_test
+postgres	Run npm ci	2026-11-17T00:12:30.2142438Z ##[endgroup]
+postgres	Run npm ci	2026-11-17T00:12:32.4304046Z 
+postgres	Run npm ci	2026-11-17T00:12:32.4310581Z added 206 packages, and audited 213 packages in 2s
+postgres	Run npm ci	2026-11-17T00:12:32.4310888Z 
+postgres	Run npm ci	2026-11-17T00:12:32.4311129Z 61 packages are looking for funding
+postgres	Run npm ci	2026-11-17T00:12:32.4311508Z   run `npm fund` for details
+postgres	Run npm ci	2026-11-17T00:12:32.4311735Z 
+postgres	Run npm ci	2026-11-17T00:12:32.4311879Z found 0 vulnerabilities
+postgres	Run npm run typecheck	﻿2026-11-17T00:12:32.4853360Z ##[group]Run npm run typecheck
+postgres	Run npm run typecheck	2026-11-17T00:12:32.4853641Z ^[[36;1mnpm run typecheck^[[0m
+postgres	Run npm run typecheck	2026-11-17T00:12:32.4900364Z shell: /usr/bin/bash -e {0}
+postgres	Run npm run typecheck	2026-11-17T00:12:32.4900601Z env:
+postgres	Run npm run typecheck	2026-11-17T00:12:32.4901077Z   TEST_DATABASE_URL: ***127.0.0.1:5432/techtask_test
+postgres	Run npm run typecheck	2026-11-17T00:12:32.4901327Z ##[endgroup]
+postgres	Run npm run typecheck	2026-11-17T00:12:32.5670007Z 
+postgres	Run npm run typecheck	2026-11-17T00:12:32.5670515Z > techtask@1.0.0 typecheck
+postgres	Run npm run typecheck	2026-11-17T00:12:32.5670918Z > tsc --noEmit
+postgres	Run npm run typecheck	2026-11-17T00:12:32.5671097Z 
+postgres	Run npm test	﻿2026-11-17T00:12:32.9403550Z ##[group]Run npm test
+postgres	Run npm test	2026-11-17T00:12:32.9403776Z ^[[36;1mnpm test^[[0m
+postgres	Run npm test	2026-11-17T00:12:32.9448072Z shell: /usr/bin/bash -e {0}
+postgres	Run npm test	2026-11-17T00:12:32.9448296Z env:
+postgres	Run npm test	2026-11-17T00:12:32.9448897Z   TEST_DATABASE_URL: ***127.0.0.1:5432/techtask_test
+postgres	Run npm test	2026-11-17T00:12:32.9449152Z ##[endgroup]
+postgres	Run npm test	2026-11-17T00:12:33.0217409Z 
+postgres	Run npm test	2026-11-17T00:12:33.0218057Z > techtask@1.0.0 test
+postgres	Run npm test	2026-11-17T00:12:33.0218405Z > vitest run
+postgres	Run npm test	2026-11-17T00:12:33.0218554Z 
+postgres	Run npm test	2026-11-17T00:12:33.2539045Z 
+postgres	Run npm test	2026-11-17T00:12:33.2546387Z ^[[1m^[[30m^[[46m RUN ^[[49m^[[39m^[[22m ^[[36mv5.1.0 ^[[39m^[[90m/home/runner/work/TechTask/TechTask^[[39m
+postgres	Run npm test	2026-11-17T00:12:33.2546878Z 
+postgres	Run npm test	2026-11-17T00:12:37.6253864Z ^[[90mstderr^[[2m | tests/tasks.test.ts^[[2m > ^[[22m^[[2mCálculos y persistencia^[[2m > ^[[22m^[[2mcontrola un fallo real de almacenamiento sin exponer detalles internos
+postgres	Run npm test	2026-11-17T00:12:37.6255495Z ^[[22m^[[39m{ name: ^[[32m'Error'^[[39m, message: ^[[32m'PGlite is closed'^[[39m }
+postgres	Run npm test	2026-11-17T00:12:37.6255886Z 
+postgres	Run npm test	2026-11-17T00:12:37.6266448Z ^[[90mstderr^[[2m | tests/tasks.test.ts^[[2m > ^[[22m^[[2mCálculos y persistencia^[[2m > ^[[22m^[[2mcontrola un fallo real de almacenamiento sin exponer detalles internos
+postgres	Run npm test	2026-11-17T00:12:37.6268143Z ^[[22m^[[39m{ name: ^[[32m'Error'^[[39m, message: ^[[32m'PGlite is closed'^[[39m }
+postgres	Run npm test	2026-11-17T00:12:37.6268697Z 
+postgres	Run npm test	2026-11-17T00:12:39.4618664Z  ^[[32m✓^[[39m tests/tasks.test.ts ^[[2m(^[[22m^[[2m45 tests^[[22m^[[2m)^[[22m^[[33m 5868^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:39.4619690Z    ^[[32m✓^[[39m Cálculos y persistencia ^[[2m(3)^[[22m
+postgres	Run npm test	2026-11-17T00:12:39.4620759Z      ^[[33m^[[2m✓^[[22m^[[39m controla un fallo real de almacenamiento sin exponer detalles internos^[[33m 1602^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:39.4621988Z      ^[[33m^[[2m✓^[[22m^[[39m proyectos y tareas persisten al cerrar/reabrir PostgreSQL local^[[33m 1757^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:39.6917532Z (node:2781) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+postgres	Run npm test	2026-11-17T00:12:39.6920447Z (Use `node --trace-warnings ...` to show where the warning was created)
+postgres	Run npm test	2026-11-17T00:12:42.2932863Z  ^[[32m✓^[[39m tests/import.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[33m 2582^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:42.2933695Z    ^[[32m✓^[[39m RN11: migración explícita sin pérdida de datos ^[[2m(1)^[[22m
+postgres	Run npm test	2026-11-17T00:12:42.2934656Z      ^[[33m^[[2m✓^[[22m^[[39m preserva IDs, contenido y origen; colisión revierte el proyecto entero^[[33m 2580^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:42.4071042Z  ^[[32m✓^[[39m tests/calendar.test.ts ^[[2m(^[[22m^[[2m12 tests^[[22m^[[2m)^[[22m^[[32m 17^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:44.3074701Z  ^[[32m✓^[[39m tests/database.test.ts ^[[2m(^[[22m^[[2m1 test^[[22m^[[2m)^[[22m^[[33m 1788^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:44.3075954Z    ^[[33m^[[2m✓^[[22m^[[39m inicia en una carpeta anidada inexistente como un checkout limpio de CI^[[33m 1787^[[2mms^[[22m^[[39m
+postgres	Run npm test	2026-11-17T00:12:44.3107593Z 
+postgres	Run npm test	2026-11-17T00:12:44.3111173Z ^[[2m Test Files ^[[22m ^[[1m^[[32m4 passed^[[39m^[[22m^[[90m (4)^[[39m
+postgres	Run npm test	2026-11-17T00:12:44.3112466Z ^[[2m      Tests ^[[22m ^[[1m^[[32m59 passed^[[39m^[[22m^[[90m (59)^[[39m
+postgres	Run npm test	2026-11-17T00:12:44.3113062Z ^[[2m   Start at ^[[22m 00:12:33
+postgres	Run npm test	2026-11-17T00:12:44.3116508Z ^[[2m   Duration ^[[22m 11.05s^[[2m (tests 96%, import 3%, transform 1%)^[[22m
+postgres	Run npm test	2026-11-17T00:12:44.3126036Z 
+postgres	Run npm run build	﻿2026-11-17T00:12:44.3528104Z ##[group]Run npm run build
+postgres	Run npm run build	2026-11-17T00:12:44.3528356Z ^[[36;1mnpm run build^[[0m
+postgres	Run npm run build	2026-11-17T00:12:44.3572168Z shell: /usr/bin/bash -e {0}
+postgres	Run npm run build	2026-11-17T00:12:44.3572386Z env:
+postgres	Run npm run build	2026-11-17T00:12:44.3573033Z   TEST_DATABASE_URL: ***127.0.0.1:5432/techtask_test
+postgres	Run npm run build	2026-11-17T00:12:44.3573287Z ##[endgroup]
+postgres	Run npm run build	2026-11-17T00:12:44.4339579Z 
+postgres	Run npm run build	2026-11-17T00:12:44.4340371Z > techtask@1.0.0 build
+postgres	Run npm run build	2026-11-17T00:12:44.4341170Z > npm run typecheck && vite build && esbuild backend/src/server.ts --bundle --platform=node --format=esm --packages=external --sourcemap --outfile=dist/server/server.js
+postgres	Run npm run build	2026-11-17T00:12:44.4341688Z 
+postgres	Run npm run build	2026-11-17T00:12:44.5090353Z 
+postgres	Run npm run build	2026-11-17T00:12:44.5090663Z > techtask@1.0.0 typecheck
+postgres	Run npm run build	2026-11-17T00:12:44.5091009Z > tsc --noEmit
+postgres	Run npm run build	2026-11-17T00:12:44.5091172Z 
+postgres	Run npm run build	2026-11-17T00:12:45.1079408Z ^[[36mvite v8.3.8 ^[[32mbuilding client environment for production...^[[36m^[[39m
+postgres	Run npm run build	2026-11-17T00:12:45.1156919Z transforming...
+postgres	Run npm run build	2026-11-17T00:12:45.2426097Z ✓ 2094 modules transformed.
+postgres	Run npm run build	2026-11-17T00:12:45.2678505Z rendering chunks...
+postgres	Run npm run build	2026-11-17T00:12:45.2956566Z computing gzip size...
+postgres	Run npm run build	2026-11-17T00:12:45.2993437Z dist/frontend/index.html                   0.40 kB │ gzip:  0.29 kB
+postgres	Run npm run build	2026-11-17T00:12:45.2994034Z dist/frontend/assets/index-DmBjfdVz.css   18.73 kB │ gzip:  5.05 kB
+postgres	Run npm run build	2026-11-17T00:12:45.2994700Z dist/frontend/assets/index-0YtOQ7j2.js   254.42 kB │ gzip: 79.34 kB
+postgres	Run npm run build	2026-11-17T00:12:45.2994928Z 
+postgres	Run npm run build	2026-11-17T00:12:45.3001869Z ^[[32m✓ built in 192ms^[[39m
+postgres	Run npm run build	2026-11-17T00:12:45.3314635Z 
+postgres	Run npm run build	2026-11-17T00:12:45.3314962Z   dist/server/server.js      37.6kb
+postgres	Run npm run build	2026-11-17T00:12:45.3315314Z   dist/server/server.js.map  71.8kb
+postgres	Run npm run build	2026-11-17T00:12:45.3315479Z 
+postgres	Run npm run build	2026-11-17T00:12:45.3315733Z ⚡ Done in 4ms
+postgres	Post Run actions/setup-node@v4	﻿2026-11-17T00:12:45.3434791Z Post job cleanup.
+postgres	Post Run actions/setup-node@v4	2026-11-17T00:12:45.4411880Z (node:2903) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+postgres	Post Run actions/setup-node@v4	2026-11-17T00:12:45.4412582Z (Use `node --trace-deprecation ...` to show where the warning was created)
+postgres	Post Run actions/setup-node@v4	2026-11-17T00:12:45.4415073Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-949676008295fedfabdc9c0ba4522a9f87a2f1ba864f7f25a41e5292775a7601, not saving cache.
+postgres	Post Run actions/checkout@v4	﻿2026-11-17T00:12:45.4531575Z Post job cleanup.
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5199116Z [command]/usr/bin/git version
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5235868Z git version 2.56.1
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5264773Z Temporarily overriding HOME='/home/runner/work/_temp/5edd7485-65fd-4f92-8ba3-3bfbaa08c165' before making global git config changes
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5265998Z Adding repository directory to the temporary git global config as a safe directory
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5269558Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TechTask/TechTask
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5303452Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5333947Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5610710Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5636701Z http.https://github.com/.extraheader
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5673743Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5684712Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5947526Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+postgres	Post Run actions/checkout@v4	2026-11-17T00:12:45.5978285Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+postgres	Stop containers	﻿2026-11-17T00:12:45.6343878Z Print service container logs: 832aac93ff5e42c19c029ba18b9c30c7_postgres16_a920f7
+postgres	Stop containers	2026-11-17T00:12:45.6348341Z ##[command]/usr/bin/docker logs --details df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Stop containers	2026-11-17T00:12:45.6472884Z  The files belonging to this database system will be owned by user "postgres".
+postgres	Stop containers	2026-11-17T00:12:45.6474864Z  initdb: warning: enabling "trust" authentication for local connections
+postgres	Stop containers	2026-11-17T00:12:45.6475663Z  initdb: hint: You can change this by editing pg_hba.conf or using the option -A, or --auth-local and --auth-host, the next time you run initdb.
+postgres	Stop containers	2026-11-17T00:12:45.6476402Z  2026-11-17 00:12:10.621 UTC [1] LOG:  starting PostgreSQL 16.16 (Debian 16.16-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+postgres	Stop containers	2026-11-17T00:12:45.6476984Z  2026-11-17 00:12:10.622 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+postgres	Stop containers	2026-11-17T00:12:45.6477362Z  2026-11-17 00:12:10.622 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+postgres	Stop containers	2026-11-17T00:12:45.6477846Z  2026-11-17 00:12:10.622 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres	Stop containers	2026-11-17T00:12:45.6478277Z  2026-11-17 00:12:10.625 UTC [66] LOG:  database system was shut down at 2026-11-17 00:12:10 UTC
+postgres	Stop containers	2026-11-17T00:12:45.6478669Z  2026-11-17 00:12:10.628 UTC [1] LOG:  database system is ready to accept connections
+postgres	Stop containers	2026-11-17T00:12:45.6479103Z  2026-11-17 00:12:34.120 UTC [86] ERROR:  duplicate key value violates unique constraint "app_users_email_key"
+postgres	Stop containers	2026-11-17T00:12:45.6479586Z  2026-11-17 00:12:34.120 UTC [86] DETAIL:  Key (email)=(prueba-mwjxuisu-6@example.test) already exists.
+postgres	Stop containers	2026-11-17T00:12:45.6479947Z  This user must also own the server process.
+postgres	Stop containers	2026-11-17T00:12:45.6480334Z  2026-11-17 00:12:34.120 UTC [86] STATEMENT:  INSERT INTO app_users(id,email,password_hash) VALUES ($1,$2,$3)
+postgres	Stop containers	2026-11-17T00:12:45.6494947Z  
+postgres	Stop containers	2026-11-17T00:12:45.6495345Z  The database cluster will be initialized with locale "en_US.utf8".
+postgres	Stop containers	2026-11-17T00:12:45.6495914Z  The default database encoding has accordingly been set to "UTF8".
+postgres	Stop containers	2026-11-17T00:12:45.6496469Z  The default text search configuration will be set to "english".
+postgres	Stop containers	2026-11-17T00:12:45.6496874Z  
+postgres	Stop containers	2026-11-17T00:12:45.6497113Z  Data page checksums are disabled.
+postgres	Stop containers	2026-11-17T00:12:45.6497418Z  
+postgres	Stop containers	2026-11-17T00:12:45.6497789Z  fixing permissions on existing directory /var/lib/postgresql/data ... ok
+postgres	Stop containers	2026-11-17T00:12:45.6498266Z  creating subdirectories ... ok
+postgres	Stop containers	2026-11-17T00:12:45.6498607Z  selecting dynamic shared memory implementation ... posix
+postgres	Stop containers	2026-11-17T00:12:45.6498895Z  selecting default max_connections ... 100
+postgres	Stop containers	2026-11-17T00:12:45.6499145Z  selecting default shared_buffers ... 128MB
+postgres	Stop containers	2026-11-17T00:12:45.6499382Z  selecting default time zone ... Etc/UTC
+postgres	Stop containers	2026-11-17T00:12:45.6499894Z  creating configuration files ... ok
+postgres	Stop containers	2026-11-17T00:12:45.6500116Z  running bootstrap script ... ok
+postgres	Stop containers	2026-11-17T00:12:45.6500363Z  performing post-bootstrap initialization ... ok
+postgres	Stop containers	2026-11-17T00:12:45.6500618Z  syncing data to disk ... ok
+postgres	Stop containers	2026-11-17T00:12:45.6500825Z  
+postgres	Stop containers	2026-11-17T00:12:45.6500970Z  
+postgres	Stop containers	2026-11-17T00:12:45.6501157Z  Success. You can now start the database server using:
+postgres	Stop containers	2026-11-17T00:12:45.6501405Z  
+postgres	Stop containers	2026-11-17T00:12:45.6501601Z      pg_ctl -D /var/lib/postgresql/data -l logfile start
+postgres	Stop containers	2026-11-17T00:12:45.6501850Z  
+postgres	Stop containers	2026-11-17T00:12:45.6502357Z  waiting for server to start....2026-11-17 00:12:10.230 UTC [50] LOG:  starting PostgreSQL 16.16 (Debian 16.16-1.pgdg13+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 14.2.0-19) 14.2.0, 64-bit
+postgres	Stop containers	2026-11-17T00:12:45.6503013Z  2026-11-17 00:12:10.230 UTC [50] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+postgres	Stop containers	2026-11-17T00:12:45.6503437Z  2026-11-17 00:12:10.233 UTC [53] LOG:  database system was shut down at 2026-11-17 00:12:09 UTC
+postgres	Stop containers	2026-11-17T00:12:45.6503837Z  2026-11-17 00:12:10.236 UTC [50] LOG:  database system is ready to accept connections
+postgres	Stop containers	2026-11-17T00:12:45.6504124Z   done
+postgres	Stop containers	2026-11-17T00:12:45.6504525Z  server started
+postgres	Stop containers	2026-11-17T00:12:45.6504856Z  CREATE DATABASE
+postgres	Stop containers	2026-11-17T00:12:45.6505205Z  
+postgres	Stop containers	2026-11-17T00:12:45.6505414Z  
+postgres	Stop containers	2026-11-17T00:12:45.6505783Z  /usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+postgres	Stop containers	2026-11-17T00:12:45.6506271Z  
+postgres	Stop containers	2026-11-17T00:12:45.6506562Z  2026-11-17 00:12:10.404 UTC [50] LOG:  received fast shutdown request
+postgres	Stop containers	2026-11-17T00:12:45.6506998Z  waiting for server to shut down....2026-11-17 00:12:10.405 UTC [50] LOG:  aborting any active transactions
+postgres	Stop containers	2026-11-17T00:12:45.6507529Z  2026-11-17 00:12:10.407 UTC [50] LOG:  background worker "logical replication launcher" (PID 56) exited with exit code 1
+postgres	Stop containers	2026-11-17T00:12:45.6507932Z  2026-11-17 00:12:10.408 UTC [51] LOG:  shutting down
+postgres	Stop containers	2026-11-17T00:12:45.6508235Z  2026-11-17 00:12:10.408 UTC [51] LOG:  checkpoint starting: shutdown immediate
+postgres	Stop containers	2026-11-17T00:12:45.6509082Z  2026-11-17 00:12:10.503 UTC [51] LOG:  checkpoint complete: wrote 935 buffers (5.7%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.093 s, sync=0.002 s, total=0.096 s; sync files=301, longest=0.001 s, average=0.001 s; distance=4346 kB, estimate=4346 kB; lsn=0/1943060, redo lsn=0/1943060
+postgres	Stop containers	2026-11-17T00:12:45.6509866Z  2026-11-17 00:12:10.510 UTC [50] LOG:  database system is shut down
+postgres	Stop containers	2026-11-17T00:12:45.6510122Z   done
+postgres	Stop containers	2026-11-17T00:12:45.6510285Z  server stopped
+postgres	Stop containers	2026-11-17T00:12:45.6510453Z  
+postgres	Stop containers	2026-11-17T00:12:45.6510649Z  PostgreSQL init process complete; ready for start up.
+postgres	Stop containers	2026-11-17T00:12:45.6510905Z  
+postgres	Stop containers	2026-11-17T00:12:45.6514994Z Stop and remove container: 832aac93ff5e42c19c029ba18b9c30c7_postgres16_a920f7
+postgres	Stop containers	2026-11-17T00:12:45.6519340Z ##[command]/usr/bin/docker rm --force df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Stop containers	2026-11-17T00:12:49.0611212Z df589d4a8ffd7e24100d7dfa5907cfc349b4cb14a4aef115518e9f31f67353fd
+postgres	Stop containers	2026-11-17T00:12:49.0641017Z Remove container network: github_network_2cea05a15c5c468ebe3d6ad5066cf68d
+postgres	Stop containers	2026-11-17T00:12:49.0644537Z ##[command]/usr/bin/docker network rm github_network_2cea05a15c5c468ebe3d6ad5066cf68d
+postgres	Stop containers	2026-11-17T00:12:49.1196726Z github_network_2cea05a15c5c468ebe3d6ad5066cf68d
+postgres	Complete job	﻿2026-11-17T00:12:49.1262591Z Cleaning up orphan processes
+postgres	Complete job	2026-11-17T00:12:49.1584512Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+browser	Set up job	﻿2026-11-17T00:12:00.6602237Z Current runner version: '2.338.2'
+browser	Set up job	2026-11-17T00:12:00.6640306Z ##[group]Runner Image Provisioner
+browser	Set up job	2026-11-17T00:12:00.6641839Z Hosted Compute Agent
+browser	Set up job	2026-11-17T00:12:00.6642876Z Version: 20261103.629
+browser	Set up job	2026-11-17T00:12:00.6644095Z Commit: 15dbd9ccb5dbf34fae002b6ed1a2670f52df37bc
+browser	Set up job	2026-11-17T00:12:00.6645453Z Build Date: 2026-11-03T17:26:59Z
+browser	Set up job	2026-11-17T00:12:00.6647035Z Worker ID: {0bf89512-aaf4-430c-a193-98f3b459248e}
+browser	Set up job	2026-11-17T00:12:00.6648360Z Region: eastus
+browser	Set up job	2026-11-17T00:12:00.6649323Z Cloud: Azure
+browser	Set up job	2026-11-17T00:12:00.6650369Z ##[endgroup]
+browser	Set up job	2026-11-17T00:12:00.6652883Z ##[group]Operating System
+browser	Set up job	2026-11-17T00:12:00.6654115Z Ubuntu
+browser	Set up job	2026-11-17T00:12:00.6655089Z 26.04.1
+browser	Set up job	2026-11-17T00:12:00.6656035Z LTS
+browser	Set up job	2026-11-17T00:12:00.6657140Z ##[endgroup]
+browser	Set up job	2026-11-17T00:12:00.6658954Z ##[group]Runner Image
+browser	Set up job	2026-11-17T00:12:00.6660056Z Image: ubuntu-26.04
+browser	Set up job	2026-11-17T00:12:00.6661032Z Version: 20261111.196.1
+browser	Set up job	2026-11-17T00:12:00.6662967Z Included Software: https://github.com/actions/runner-images/blob/ubuntu26/20261111.196/images/ubuntu/Ubuntu2604-Readme.md
+browser	Set up job	2026-11-17T00:12:00.6666124Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu26%2F20261111.196
+browser	Set up job	2026-11-17T00:12:00.6668077Z ##[endgroup]
+browser	Set up job	2026-11-17T00:12:00.6670199Z ##[group]GITHUB_TOKEN Permissions
+browser	Set up job	2026-11-17T00:12:00.6673166Z Contents: read
+browser	Set up job	2026-11-17T00:12:00.6674369Z Metadata: read
+browser	Set up job	2026-11-17T00:12:00.6675362Z Packages: read
+browser	Set up job	2026-11-17T00:12:00.6676410Z ##[endgroup]
+browser	Set up job	2026-11-17T00:12:00.6679781Z Secret source: Actions
+browser	Set up job	2026-11-17T00:12:00.6681417Z Cache mode: write
+browser	Set up job	2026-11-17T00:12:00.6682888Z Prepare workflow directory
+browser	Set up job	2026-11-17T00:12:00.7184012Z Prepare all required actions
+browser	Set up job	2026-11-17T00:12:00.7256964Z Getting action download info
+browser	Set up job	2026-11-17T00:12:00.8907503Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+browser	Set up job	2026-11-17T00:12:01.0197858Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+browser	Set up job	2026-11-17T00:12:01.0832008Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+browser	Set up job	2026-11-17T00:12:01.2779874Z Complete job name: browser
+browser	Run actions/checkout@v4	﻿2026-11-17T00:12:01.3657056Z ##[group]Run actions/checkout@v4
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3658015Z with:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3658571Z   repository: feghi0/TechTask
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3662366Z   token: ***
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3662824Z   ssh-strict: true
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3663305Z   ssh-user: git
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3663764Z   persist-credentials: true
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3664273Z   clean: true
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3664737Z   sparse-checkout-cone-mode: true
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3665272Z   fetch-depth: 1
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3665703Z   fetch-tags: false
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3666154Z   show-progress: true
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3666759Z   lfs: false
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3667184Z   submodules: false
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3667638Z   set-safe-directory: true
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3668152Z   allow-unsafe-pr-checkout: false
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.3668946Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6287137Z Syncing repository: feghi0/TechTask
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6289991Z ##[group]Getting Git version info
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6291361Z Working directory is '/home/runner/work/TechTask/TechTask'
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6293334Z [command]/usr/bin/git version
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6332642Z git version 2.56.1
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6357810Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6373871Z Temporarily overriding HOME='/home/runner/work/_temp/8d8dc0b6-b213-418c-a1dd-d985d167d269' before making global git config changes
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6376760Z Adding repository directory to the temporary git global config as a safe directory
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6379012Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TechTask/TechTask
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6523647Z Deleting the contents of '/home/runner/work/TechTask/TechTask'
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6527351Z ##[group]Initializing the repository
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6534534Z [command]/usr/bin/git init /home/runner/work/TechTask/TechTask
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6661079Z hint: Using 'master' as the name for the initial branch. This default branch name
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6663497Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6665699Z hint: to use in all of your new repositories, which will suppress this warning,
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6676097Z hint: call:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6677061Z hint:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6678165Z hint: 	git config --global init.defaultBranch <name>
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6679491Z hint:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6680702Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6682488Z hint: 'development'. The just-created branch can be renamed via this command:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6683904Z hint:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6684467Z hint: 	git branch -m <name>
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6685048Z hint:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6686173Z hint: Disable this message with "git config set advice.defaultBranchName false"
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6688519Z Initialized empty Git repository in /home/runner/work/TechTask/TechTask/.git/
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6691690Z [command]/usr/bin/git remote add origin https://github.com/feghi0/TechTask
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6758423Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6760165Z ##[group]Disabling automatic garbage collection
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6763906Z [command]/usr/bin/git config --local gc.auto 0
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6808898Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6810470Z ##[group]Setting up auth
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6839113Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.6894879Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.7410185Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.7447274Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.7756467Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.7801853Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.8089069Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.8129963Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.8139308Z ##[group]Fetching the repository
+browser	Run actions/checkout@v4	2026-11-17T00:12:01.8141105Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1285e2354bcc821dc77540218d485783135cd7fb:refs/remotes/origin/main
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0723767Z From https://github.com/feghi0/TechTask
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0726368Z  * [new ref]         1285e2354bcc821dc77540218d485783135cd7fb -> origin/main
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0731054Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0733118Z ##[group]Determining the checkout info
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0735459Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0740226Z [command]/usr/bin/git sparse-checkout disable
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0794719Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0826395Z ##[group]Checking out the ref
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.0831747Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.1099374Z Switched to a new branch 'main'
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.1104122Z branch 'main' set up to track 'origin/main'.
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.1114025Z ##[endgroup]
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.1163680Z [command]/usr/bin/git log -1 --format=%H
+browser	Run actions/checkout@v4	2026-11-17T00:12:02.1187945Z 1285e2354bcc821dc77540218d485783135cd7fb
+browser	Run actions/setup-node@v4	﻿2026-11-17T00:12:02.1579157Z ##[group]Run actions/setup-node@v4
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.1580343Z with:
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.1581139Z   node-version: 22.21.0
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.1582078Z   cache: npm
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.1582898Z   always-auth: false
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.1583809Z   check-latest: false
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.1594466Z   token: ***
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.1595302Z ##[endgroup]
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.3180958Z Attempting to download 22.21.0...
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.3332827Z (node:2373) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.3336742Z (Use `node --trace-deprecation ...` to show where the warning was created)
+browser	Run actions/setup-node@v4	2026-11-17T00:12:02.7397921Z Acquiring 22.21.0 - x64 from https://github.com/actions/node-versions/releases/download/22.21.0-18671149699/node-22.21.0-linux-x64.tar.gz
+browser	Run actions/setup-node@v4	2026-11-17T00:12:03.1481854Z Extracting ...
+browser	Run actions/setup-node@v4	2026-11-17T00:12:03.1663856Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/838a23d0-7a52-46c8-a7d2-f528e50d80bf -f /home/runner/work/_temp/0a3a4a45-79af-4180-8849-8dd77ec91b74
+browser	Run actions/setup-node@v4	2026-11-17T00:12:04.0791576Z Adding to the cache ...
+browser	Run actions/setup-node@v4	2026-11-17T00:12:05.9602048Z ##[group]Environment details
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.1903319Z node: v22.21.0
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.1904212Z npm: 10.9.4
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.1904482Z yarn: 1.22.22
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.1905142Z ##[endgroup]
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.1929691Z [command]/opt/hostedtoolcache/node/22.21.0/x64/bin/npm config get cache
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.2882080Z /home/runner/.npm
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.3575993Z Cache hit for: node-cache-Linux-x64-npm-949676008295fedfabdc9c0ba4522a9f87a2f1ba864f7f25a41e5292775a7601
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.3685161Z (node:2373) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.7655945Z Received 58967895 of 58967895 (100.0%), 154.9 MBs/sec
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.7656888Z Cache Size: ~56 MB (58967895 B)
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.7818797Z [command]/usr/bin/tar -xf /home/runner/work/_temp/17ae08e3-1360-4e5d-a0ba-7751557724f7/cache.tzst -P -C /home/runner/work/TechTask/TechTask --use-compress-program unzstd
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.9033103Z Cache restored successfully
+browser	Run actions/setup-node@v4	2026-11-17T00:12:06.9069012Z Cache restored from key: node-cache-Linux-x64-npm-949676008295fedfabdc9c0ba4522a9f87a2f1ba864f7f25a41e5292775a7601
+browser	Run npm ci	﻿2026-11-17T00:12:06.9291265Z ##[group]Run npm ci
+browser	Run npm ci	2026-11-17T00:12:06.9291601Z ^[[36;1mnpm ci^[[0m
+browser	Run npm ci	2026-11-17T00:12:06.9347773Z shell: /usr/bin/bash -e {0}
+browser	Run npm ci	2026-11-17T00:12:06.9348075Z ##[endgroup]
+browser	Run npm ci	2026-11-17T00:12:09.9910510Z 
+browser	Run npm ci	2026-11-17T00:12:09.9920928Z added 206 packages, and audited 213 packages in 3s
+browser	Run npm ci	2026-11-17T00:12:09.9921513Z 
+browser	Run npm ci	2026-11-17T00:12:09.9921882Z 61 packages are looking for funding
+browser	Run npm ci	2026-11-17T00:12:09.9922486Z   run `npm fund` for details
+browser	Run npm ci	2026-11-17T00:12:09.9924143Z 
+browser	Run npm ci	2026-11-17T00:12:09.9924485Z found 0 vulnerabilities
+browser	Run npx playwright install --with-deps chromium	﻿2026-11-17T00:12:10.0609988Z ##[group]Run npx playwright install --with-deps chromium
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.0610516Z ^[[36;1mnpx playwright install --with-deps chromium^[[0m
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.0664291Z shell: /usr/bin/bash -e {0}
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.0664593Z ##[endgroup]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.8087099Z Installing dependencies...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.8178936Z Switching to root user to install dependencies...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.9188397Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.9658646Z Hit:2 http://azure.archive.ubuntu.com/ubuntu resolute InRelease
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.9691267Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute-updates InRelease [137 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.9749738Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute-backports InRelease [137 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.9774016Z Get:6 https://packages.microsoft.com/ubuntu/26.04/prod resolute InRelease [3964 B]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:10.9798562Z Get:5 http://azure.archive.ubuntu.com/ubuntu resolute-security InRelease [137 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0122896Z Get:7 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main amd64v3 Packages [873 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0336984Z Get:8 http://azure.archive.ubuntu.com/ubuntu resolute-updates/main Translation-en [195 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0358898Z Get:9 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe amd64v3 Packages [386 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0379828Z Get:10 http://azure.archive.ubuntu.com/ubuntu resolute-updates/universe Translation-en [122 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0453494Z Get:11 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main arm64 Packages [146 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0517835Z Get:12 https://packages.microsoft.com/ubuntu/26.04/prod resolute/main amd64 Packages [160 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0577162Z Get:13 http://azure.archive.ubuntu.com/ubuntu resolute-security/main amd64v3 Packages [719 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0637742Z Get:14 http://azure.archive.ubuntu.com/ubuntu resolute-security/main Translation-en [157 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0639667Z Get:15 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe amd64v3 Packages [221 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0680603Z Get:16 http://azure.archive.ubuntu.com/ubuntu resolute-security/universe Translation-en [72.6 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0701597Z Get:17 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted amd64v3 Packages [590 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:11.0733582Z Get:18 http://azure.archive.ubuntu.com/ubuntu resolute-security/restricted Translation-en [122 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:13.3358503Z Fetched 4178 kB in 0s (10.8 MB/s)
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.0617841Z Reading package lists...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.0896925Z Reading package lists...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.2873726Z Building dependency tree...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.2881357Z Reading state information...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3233758Z libasound2t64 is already the newest version (1.2.15.3-1ubuntu1.1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3234805Z libasound2t64 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3235514Z libatk-bridge2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3236262Z libatk-bridge2.0-0t64 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3237369Z libatk1.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3237994Z libatk1.0-0t64 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3238657Z libatspi2.0-0t64 is already the newest version (2.60.4-0ubuntu0.1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3239336Z libatspi2.0-0t64 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3239903Z libcairo2 is already the newest version (1.18.4-3).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3240434Z libcairo2 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3241033Z libcups2t64 is already the newest version (2.4.16-1ubuntu1.3).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3241631Z libcups2t64 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3242222Z libdbus-1-3 is already the newest version (1.16.2-2ubuntu4).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3242780Z libdbus-1-3 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3243304Z libdrm2 is already the newest version (2.4.131-1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3243850Z libdrm2 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3244876Z libgbm1 is already the newest version (26.0.8-1ubuntu0.3).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3245342Z libgbm1 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3245856Z libglib2.0-0t64 is already the newest version (2.88.0-1ubuntu0.1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3246401Z libglib2.0-0t64 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3247056Z libnspr4 is already the newest version (2:4.38.2-1ubuntu1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3247548Z libnspr4 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3248040Z libnss3 is already the newest version (2:3.120-1ubuntu2.2).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3248508Z libnss3 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3248982Z libpango-1.0-0 is already the newest version (1.57.0-1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3249479Z libpango-1.0-0 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3249992Z libx11-6 is already the newest version (2:1.8.13-1ubuntu0.1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3250495Z libx11-6 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3250967Z libxcb1 is already the newest version (1.17.0-2ubuntu1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3251429Z libxcb1 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3251941Z libxcomposite1 is already the newest version (1:0.4.6-1build1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3252466Z libxcomposite1 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3252955Z libxdamage1 is already the newest version (1:1.1.7-1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3253597Z libxdamage1 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3254091Z libxext6 is already the newest version (2:1.3.4-1build3).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3254531Z libxext6 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3254926Z libxfixes3 is already the newest version (1:6.0.0-2build2).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3255327Z libxfixes3 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3255720Z libxkbcommon0 is already the newest version (1.13.1-1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3256106Z libxkbcommon0 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3256510Z libxrandr2 is already the newest version (2:1.5.4-1build1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3257008Z libxrandr2 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3257406Z xvfb is already the newest version (2:21.1.22-1ubuntu1.3).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3257920Z fonts-noto-color-emoji is already the newest version (2.051-1build1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3258468Z libfontconfig1 is already the newest version (2.17.1-3ubuntu1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3258886Z libfontconfig1 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3259345Z libfreetype6 is already the newest version (2.14.2+dfsg-1ubuntu0.2).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3259789Z libfreetype6 set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3260277Z fonts-liberation is already the newest version (1:2.1.5-3build1).
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3260715Z fonts-liberation set to manually installed.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.3790763Z Solving dependencies...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4644342Z The following additional packages will be installed:
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4644950Z   xfonts-encodings xfonts-utils
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4650356Z Recommended packages:
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4650916Z   fonts-ipafont-mincho fonts-tlwg-loma
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4866024Z The following NEW packages will be installed:
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4867526Z   fonts-freefont-ttf fonts-ipafont-gothic fonts-tlwg-loma-otf fonts-unifont
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4877761Z   fonts-wqy-zenhei xfonts-cyrillic xfonts-encodings xfonts-scalable
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.4878531Z   xfonts-utils
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.5086105Z 0 upgraded, 9 newly installed, 0 to remove and 25 not upgraded.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.5087096Z Need to get 21.9 MB of archives.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.5087888Z After this operation, 80.2 MB of additional disk space will be used.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.5088768Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.5395249Z Get:2 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-ipafont-gothic all 00303-23ubuntu1 [3703 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.5723359Z Get:3 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 fonts-freefont-ttf all 20211204+svn4273-4build1 [5656 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.6160618Z Get:4 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-tlwg-loma-otf all 1:0.7.3-1build1 [106 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.6303440Z Get:5 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-unifont all 1:16.0.04-1build1 [3169 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.6608175Z Get:6 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 fonts-wqy-zenhei all 0.9.45-8build1 [7863 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.7141948Z Get:7 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-encodings all 1:1.0.5-0ubuntu3 [576 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.7307684Z Get:8 http://azure.archive.ubuntu.com/ubuntu resolute/main amd64v3 xfonts-utils amd64 1:7.7+7build1 [97.3 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.7451535Z Get:9 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-cyrillic all 1:1.0.5+nmu1build1 [384 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:14.7609764Z Get:10 http://azure.archive.ubuntu.com/ubuntu resolute/universe amd64v3 xfonts-scalable all 1:1.0.3-1.3build1 [304 kB]
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.0884075Z Fetched 21.9 MB in 0s (82.0 MB/s)
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1126034Z Selecting previously unselected package fonts-ipafont-gothic.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1456532Z (Reading database ... 
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1457155Z (Reading database ... 5%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1457439Z (Reading database ... 10%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1458177Z (Reading database ... 15%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1458867Z (Reading database ... 20%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1459655Z (Reading database ... 25%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1459994Z (Reading database ... 30%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1460251Z (Reading database ... 35%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1460507Z (Reading database ... 40%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1460755Z (Reading database ... 45%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.1461326Z (Reading database ... 50%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.2450781Z (Reading database ... 55%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.4024676Z (Reading database ... 60%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.5440037Z (Reading database ... 65%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.7057949Z (Reading database ... 70%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:15.8961923Z (Reading database ... 75%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.0518833Z (Reading database ... 80%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.1971978Z (Reading database ... 85%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.3581876Z (Reading database ... 90%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.5072662Z (Reading database ... 95%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.5073093Z (Reading database ... 100%
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.5073647Z (Reading database ... 213946 files and directories currently installed.)
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.5115069Z Preparing to unpack .../0-fonts-ipafont-gothic_00303-23ubuntu1_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.5218924Z Unpacking fonts-ipafont-gothic (00303-23ubuntu1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.5939413Z Selecting previously unselected package fonts-freefont-ttf.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.6077929Z Preparing to unpack .../1-fonts-freefont-ttf_20211204+svn4273-4build1_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.6085736Z Unpacking fonts-freefont-ttf (20211204+svn4273-4build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.6947962Z Selecting previously unselected package fonts-tlwg-loma-otf.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.7085999Z Preparing to unpack .../2-fonts-tlwg-loma-otf_1%3a0.7.3-1build1_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.7094235Z Unpacking fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.7327038Z Selecting previously unselected package fonts-unifont.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.7466032Z Preparing to unpack .../3-fonts-unifont_1%3a16.0.04-1build1_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.7474215Z Unpacking fonts-unifont (1:16.0.04-1build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.8609756Z Selecting previously unselected package fonts-wqy-zenhei.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.8749829Z Preparing to unpack .../4-fonts-wqy-zenhei_0.9.45-8build1_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.8899116Z Unpacking fonts-wqy-zenhei (0.9.45-8build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.9781061Z Selecting previously unselected package xfonts-encodings.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.9919736Z Preparing to unpack .../5-xfonts-encodings_1%3a1.0.5-0ubuntu3_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:16.9927391Z Unpacking xfonts-encodings (1:1.0.5-0ubuntu3) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.0259535Z Selecting previously unselected package xfonts-utils.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.0398644Z Preparing to unpack .../6-xfonts-utils_1%3a7.7+7build1_amd64v3.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.0407468Z Unpacking xfonts-utils (1:7.7+7build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.0768091Z Selecting previously unselected package xfonts-cyrillic.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.0907883Z Preparing to unpack .../7-xfonts-cyrillic_1%3a1.0.5+nmu1build1_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.0917290Z Unpacking xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.1272367Z Selecting previously unselected package xfonts-scalable.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.1410344Z Preparing to unpack .../8-xfonts-scalable_1%3a1.0.3-1.3build1_all.deb ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.1419155Z Unpacking xfonts-scalable (1:1.0.3-1.3build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.1865318Z Setting up fonts-wqy-zenhei (0.9.45-8build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2021573Z Setting up fonts-freefont-ttf (20211204+svn4273-4build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2041802Z Setting up fonts-tlwg-loma-otf (1:0.7.3-1build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2061786Z Setting up xfonts-encodings (1:1.0.5-0ubuntu3) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2081529Z Setting up fonts-ipafont-gothic (00303-23ubuntu1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2144650Z update-alternatives: using /usr/share/fonts/opentype/ipafont-gothic/ipag.ttf to provide /usr/share/fonts/truetype/fonts-japanese-gothic.ttf (fonts-japanese-gothic.ttf) in auto mode
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2161095Z Setting up fonts-unifont (1:16.0.04-1build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2217292Z Setting up xfonts-utils (1:7.7+7build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2275418Z Setting up xfonts-cyrillic (1:1.0.5+nmu1build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.2730751Z Setting up xfonts-scalable (1:1.0.3-1.3build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.3149469Z Processing triggers for man-db (2.13.1-1build1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.3171667Z Not building database; man-db/auto-update is not 'true'.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:17.3184789Z Processing triggers for fontconfig (2.17.1-3ubuntu1) ...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0505684Z 
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0506385Z Running kernel seems to be up-to-date.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0506980Z 
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0507127Z Restarting services...
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0598386Z 
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0598949Z Service restarts being deferred:
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0601851Z  systemctl restart hosted-compute-agent.service
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0602343Z 
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0602865Z No containers need to be restarted.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0603222Z 
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0603556Z No user sessions are running outdated binaries.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0603944Z 
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.0604452Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:18.9876041Z Downloading Chrome for Testing 159.0.8154.6 (playwright chromium v1255) from https://cdn.playwright.dev/builds/cft/159.0.8154.6/linux64/chrome-linux64.zip
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.3561686Z |                                                                                |   0% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.5283914Z |■■■■■■■■                                                                        |  10% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.6246335Z |■■■■■■■■■■■■■■■■                                                                |  20% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.6931133Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.7621219Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.8353052Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.8984626Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:19.9614358Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:20.0244823Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:20.0895091Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:20.1571114Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 199.3 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:22.8094333Z Chrome for Testing 159.0.8154.6 (playwright chromium v1255) downloaded to /home/runner/.cache/ms-playwright/chromium-1255
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:22.8097797Z Downloading FFmpeg (playwright ffmpeg v1013) from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1013/ffmpeg-linux.zip
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.1867370Z |                                                                                |   0% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.1913074Z |■■■■■■■■                                                                        |  10% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.1937164Z |■■■■■■■■■■■■■■■■                                                                |  20% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.1957017Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.1985850Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2002954Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2023185Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2041953Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2061716Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2077317Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2108799Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 2.2 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2911781Z FFmpeg (playwright ffmpeg v1013) downloaded to /home/runner/.cache/ms-playwright/ffmpeg-1013
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.2940421Z Downloading Chrome Headless Shell 159.0.8154.6 (playwright chromium-headless-shell v1255) from https://cdn.playwright.dev/builds/cft/159.0.8154.6/linux64/chrome-headless-shell-linux64.zip
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.6648303Z |                                                                                |   0% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.8355898Z |■■■■■■■■                                                                        |  10% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.8994483Z |■■■■■■■■■■■■■■■■                                                                |  20% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:23.9718686Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:24.0625571Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:24.1090460Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:24.1661574Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:24.2123888Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:24.2889898Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:24.3687938Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:24.4658406Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 125.7 MiB
+browser	Run npx playwright install --with-deps chromium	2026-11-17T00:12:26.4280038Z Chrome Headless Shell 159.0.8154.6 (playwright chromium-headless-shell v1255) downloaded to /home/runner/.cache/ms-playwright/chromium_headless_shell-1255
+browser	Run npm run test:e2e	﻿2026-11-17T00:12:26.4579455Z ##[group]Run npm run test:e2e
+browser	Run npm run test:e2e	2026-11-17T00:12:26.4579812Z ^[[36;1mnpm run test:e2e^[[0m
+browser	Run npm run test:e2e	2026-11-17T00:12:26.4629900Z shell: /usr/bin/bash -e {0}
+browser	Run npm run test:e2e	2026-11-17T00:12:26.4630171Z env:
+browser	Run npm run test:e2e	2026-11-17T00:12:26.4630358Z   CI: true
+browser	Run npm run test:e2e	2026-11-17T00:12:26.4630552Z ##[endgroup]
+browser	Run npm run test:e2e	2026-11-17T00:12:26.5618291Z 
+browser	Run npm run test:e2e	2026-11-17T00:12:26.5618780Z > techtask@1.0.0 test:e2e
+browser	Run npm run test:e2e	2026-11-17T00:12:26.5619157Z > playwright test
+browser	Run npm run test:e2e	2026-11-17T00:12:26.5619318Z 
+browser	Run npm run test:e2e	2026-11-17T00:12:32.2435916Z 
+browser	Run npm run test:e2e	2026-11-17T00:12:32.2437281Z Running 1 test using 1 worker
+browser	Run npm run test:e2e	2026-11-17T00:12:38.4696827Z ·
+browser	Run npm run test:e2e	2026-11-17T00:12:38.4700488Z   1 passed (11.2s)
+browser	Run actions/upload-artifact@v4	﻿2026-11-17T00:12:38.5001087Z ##[group]Run actions/upload-artifact@v4
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5001415Z with:
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5001623Z   name: browser-evidence
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5001916Z   path: docs/evidencias/*.png
+browser	Run actions/upload-artifact@v4	test-results/
+browser	Run actions/upload-artifact@v4	
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5002246Z   if-no-files-found: ignore
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5002493Z   compression-level: 6
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5002715Z   overwrite: false
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5002939Z   include-hidden-files: false
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.5003183Z ##[endgroup]
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.6748208Z (node:3134) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.6749117Z (Use `node --trace-deprecation ...` to show where the warning was created)
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.6848703Z Multiple search paths detected. Calculating the least common ancestor of all paths
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.6853546Z The least common ancestor is /home/runner/work/TechTask/TechTask. This will be the root directory of the artifact
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.6854911Z With the provided path, there will be 10 files uploaded
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.6857035Z Artifact name is valid!
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.6858109Z Root directory input is valid!
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.8801184Z Beginning upload of artifact content to blob storage
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:38.9556235Z (node:3134) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:39.0544069Z Uploaded bytes 1038957
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:39.0743835Z Finished uploading artifact content to blob storage!
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:39.0744921Z SHA256 digest of uploaded artifact zip is f9469c097ba5a0610b8570b0399b796c11ae9479eb794ea49e0d0b680b2fc0a5
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:39.0747315Z Finalizing artifact upload
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:39.4031981Z Artifact browser-evidence.zip successfully finalized. Artifact ID 14283934950
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:39.4034002Z Artifact browser-evidence has been successfully uploaded! Final size is 1038957 bytes. Artifact ID is 14283934950
+browser	Run actions/upload-artifact@v4	2026-11-17T00:12:39.4040566Z Artifact download URL: https://github.com/feghi0/TechTask/actions/runs/43985660035/artifacts/14283934950
+browser	Post Run actions/setup-node@v4	﻿2026-11-17T00:12:39.4234136Z Post job cleanup.
+browser	Post Run actions/setup-node@v4	2026-11-17T00:12:39.5471993Z (node:3147) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+browser	Post Run actions/setup-node@v4	2026-11-17T00:12:39.5473568Z (Use `node --trace-deprecation ...` to show where the warning was created)
+browser	Post Run actions/setup-node@v4	2026-11-17T00:12:39.5476029Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-949676008295fedfabdc9c0ba4522a9f87a2f1ba864f7f25a41e5292775a7601, not saving cache.
+browser	Post Run actions/checkout@v4	﻿2026-11-17T00:12:39.5607282Z Post job cleanup.
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.6643710Z [command]/usr/bin/git version
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.6707182Z git version 2.56.1
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.6758570Z Temporarily overriding HOME='/home/runner/work/_temp/993f4b1d-2f0d-4716-af34-5c6a923c8154' before making global git config changes
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.6760646Z Adding repository directory to the temporary git global config as a safe directory
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.6763868Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/TechTask/TechTask
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.6819918Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.6890027Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.7265359Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.7298285Z http.https://github.com/.extraheader
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.7315691Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.7354629Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.7659899Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+browser	Post Run actions/checkout@v4	2026-11-17T00:12:39.7697485Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+browser	Complete job	﻿2026-11-17T00:12:39.8122354Z Cleaning up orphan processes
+browser	Complete job	2026-11-17T00:12:39.8714459Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

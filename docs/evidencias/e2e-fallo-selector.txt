@@ -1,0 +1,54 @@
+
+> techtask@1.0.0 test:e2e
+> playwright test
+
+[WebServer] (node:6512) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:24092) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:9872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:9872) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:11640) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:2960) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:3800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  x  1 tests\e2e\final.spec.ts:27:1 › cuentas privadas, dependencias, entrega protegida, progreso y persistencia (1.5m)
+
+
+  1) tests\e2e\final.spec.ts:27:1 › cuentas privadas, dependencias, entrega protegida, progreso y persistencia 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: locator.fill: Test timeout of 90000ms exceeded.
+    Call log:
+      - waiting for getByLabel('Título *', { exact: true })
+
+
+      74 |       .getByRole("button", { name: "Nueva tarea", exact: true })
+      75 |       .click();
+    > 76 |     await page.getByRole("textbox", { name: /^Título \*/ }).fill(title);
+         |                                                        ^
+      77 |     await page.getByLabel("Materia *", { exact: true }).fill("Redes");
+      78 |     await page
+      79 |       .getByLabel("Descripción", { exact: true })
+        at C:\Users\Agus\Documents\ChatGPT\Generacion T\tests\e2e\final.spec.ts:76:56
+
+    Error Context: test-results\final-cuentas-privadas-dep-e8efb-ida-progreso-y-persistencia\error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results\final-cuentas-privadas-dep-e8efb-ida-progreso-y-persistencia\trace.zip
+    Usage:
+
+        npx playwright show-trace test-results\final-cuentas-privadas-dep-e8efb-ida-progreso-y-persistencia\trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests\e2e\final.spec.ts:27:1 › cuentas privadas, dependencias, entrega protegida, progreso y persistencia 
