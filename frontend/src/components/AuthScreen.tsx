@@ -93,13 +93,13 @@ export function AuthScreen({
                   type="password"
                   autoComplete={register ? "new-password" : "current-password"}
                   required
-                  minLength={register ? 12 : undefined}
+                  minLength={register ? 4 : undefined}
                   maxLength={128}
                 />
               </label>
               {register ? (
                 <small>
-                  Usá entre 12 y 128 caracteres. No reutilices contraseñas de
+                  Usá entre 4 y 128 caracteres. No reutilices contraseñas de
                   otros servicios.
                 </small>
               ) : null}

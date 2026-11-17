@@ -27,10 +27,10 @@ export class AuthService {
       throw invalid("Ingresá un correo válido.");
     if (
       typeof body.password !== "string" ||
-      body.password.length < 12 ||
+      body.password.length < 4 ||
       body.password.length > 128
     )
-      throw invalid("La contraseña debe tener entre 12 y 128 caracteres.");
+      throw invalid("La contraseña debe tener entre 4 y 128 caracteres.");
     return { email: body.email.trim().toLowerCase(), password: body.password };
   }
   async register(input: unknown): Promise<{ user: User; token: string }> {

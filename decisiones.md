@@ -27,3 +27,7 @@ La sesión TP4 registró antes la elección de SQLite integrado mediante «a». 
 ## Ajustes técnicos autónomos registrados
 
 D16: body 128KB permite 10000 puntos Unicode astrales dentro del contrato, con prueba de límite 413. D17: rechazar U+0000 antes de PostgreSQL evita500 por entrada inválida. D18: crear directorio local recursivamente permite checkout limpio en Linux. D19: retirar una dependencia válida se admite incluso de entregada y conserva su estado; solo agregar nuevos requisitos exige reabrir. Son precisiones del contrato ya documentado, verificadas por tests y revisión.
+
+## D20 — Mínimo de contraseña
+
+El 16/11/2026 el usuario pidió explícitamente un mínimo de 4 caracteres. Se reemplaza el mínimo de 12 por 4 tanto en registro/backend como en la interfaz; el máximo sigue siendo128. Las contraseñas existentes siguen funcionando. Pruebas: se rechazan3 y se acepta registro/login con4.

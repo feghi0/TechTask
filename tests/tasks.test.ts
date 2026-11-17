@@ -138,8 +138,22 @@ describe("Autenticación y cuentas privadas", () => {
       .expect(409);
     await request(context.app)
       .post("/api/auth/register")
-      .send({ email: email(), password: "corta" })
+      .send({ email: email(), password: "abc" })
       .expect(400);
+  });
+  it("acepta contraseña de exactamente 4 caracteres en registro y login", async () => {
+    const address = email();
+    const agent = request.agent(context.app);
+    await agent
+      .post("/api/auth/register")
+      .send({ email: address, password: "abcd" })
+      .expect(201);
+    await agent.post("/api/auth/logout").send({}).expect(204);
+    await agent
+      .post("/api/auth/login")
+      .send({ email: address, password: "abcd" })
+      .expect(200);
+    await agent.get("/api/auth/me").expect(200);
   });
   it("rechaza mutaciones desde un origen externo", async () => {
     await actor

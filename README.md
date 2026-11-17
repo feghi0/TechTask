@@ -49,7 +49,7 @@ npm ci
 npm run dev
 ```
 
-Abrir http://127.0.0.1:5173. Crear una cuenta con correo de ejemplo y contraseña propia de 12–128 caracteres. API http://127.0.0.1:3001; health `/api/health`. El directorio `data/postgres` conserva datos entre inicios; no lo borres si querés conservarlos. Ctrl+C detiene ambos servidores. Nunca abrir dos procesos PGlite sobre el mismo directorio.
+Abrir http://127.0.0.1:5173. Crear una cuenta con correo de ejemplo y contraseña propia de 4–128 caracteres. API http://127.0.0.1:3001; health `/api/health`. El directorio `data/postgres` conserva datos entre inicios; no lo borres si querés conservarlos. Ctrl+C detiene ambos servidores. Nunca abrir dos procesos PGlite sobre el mismo directorio.
 
 El archivo `.env.example` documenta configuración. Variables deben exportarse en la terminal o configurarse en el proveedor; el servidor no carga automáticamente `.env`.
 

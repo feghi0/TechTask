@@ -33,7 +33,7 @@ Transiciones: pending→in_progress/blocked; in_progress→pending/blocked/deliv
 
 ## Autenticación y seguridad
 
-Registro con email normalizado y contraseña de 12–128 caracteres; derivación scrypt y salt aleatorio. Sesión opaca con cookie HttpOnly/SameSite=Lax, Secure en producción, duración finita. Logout invalida sesión. Mutaciones JSON; rechazar origen externo no permitido. CORS exacto si frontend separado y credenciales; no usar wildcard. Rate limits proporcionales. No almacenar tokens en localStorage ni usar credenciales reales en seed. Sin recuperación: explicar límite en README.
+Registro con email normalizado y contraseña de 4–128 caracteres; derivación scrypt y salt aleatorio. Sesión opaca con cookie HttpOnly/SameSite=Lax, Secure en producción, duración finita. Logout invalida sesión. Mutaciones JSON; rechazar origen externo no permitido. CORS exacto si frontend separado y credenciales; no usar wildcard. Rate limits proporcionales. No almacenar tokens en localStorage ni usar credenciales reales en seed. Sin recuperación: explicar límite en README.
 
 ## Historias y aceptación Dado / Cuando / Entonces
 
