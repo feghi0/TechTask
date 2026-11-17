@@ -1,7 +1,8 @@
 import { test, expect, type Page } from "@playwright/test";
 import { mkdirSync, writeFileSync } from "node:fs";
-const evidence = "docs/evidencias";
-const password = "Demostracion-segura-2026";
+import { randomBytes } from "node:crypto";
+const evidence = process.env.TT_EVIDENCE_DIR ?? "docs/evidencias";
+const password = process.env.TT_PUBLIC_URL ? randomBytes(24).toString('base64url') : "Demostracion-segura-2026";
 
 async function closeDialog(page: Page) {
   await page
@@ -14,14 +15,23 @@ async function openTask(page: Page, title: string) {
     .click();
 }
 async function changeState(page: Page, status: string) {
-  await page.getByRole("combobox", { name: /^Nuevo estado/ }).selectOption(status);
+  await expect(page.getByRole("button", { name: "Cambiar estado", exact: true })).toBeEnabled();
+  await page
+    .getByRole("combobox", { name: /^Nuevo estado/ })
+    .selectOption(status);
   const response = page.waitForResponse(
-    (r) => r.request().method() === "PATCH" && r.url().endsWith("/status"),
+    (r) => r.request().method() === "PATCH" && r.url().endsWith("/status") && r.request().postDataJSON().status === status,
   );
   await page
     .getByRole("button", { name: "Cambiar estado", exact: true })
     .click();
-  return response;
+  const result = await response;
+  await expect(page.getByRole("button", { name: "Cambiar estado", exact: true })).toBeEnabled();
+  if(result.ok()) {
+    const labels:Record<string,string>={pending:'Pendiente',in_progress:'En desarrollo',blocked:'Bloqueada',delivered:'Entregada'};
+    await expect(page.getByText(`Estado actual: ${labels[status]}`,{exact:true})).toBeVisible();
+  }
+  return result;
 }
 
 test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia", async ({
@@ -56,10 +66,19 @@ test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia
   await page
     .getByLabel("Descripción del proyecto", { exact: true })
     .fill("Demostración académica con datos ficticios.");
+  await page.screenshot({
+    path: `${evidence}/10-creacion-proyecto.png`,
+    fullPage: true,
+  });
   await page
     .getByRole("button", { name: "Crear proyecto", exact: true })
     .click();
-  await expect(page.getByRole('button', {name:'Abrir proyecto Proyecto técnico de Redes',exact:true})).toBeVisible();
+  await expect(
+    page.getByRole("button", {
+      name: "Abrir proyecto Proyecto técnico de Redes",
+      exact: true,
+    }),
+  ).toBeVisible();
   await page.screenshot({
     path: `${evidence}/01-proyectos.png`,
     fullPage: true,
@@ -78,11 +97,18 @@ test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia
     await page.getByLabel("Materia *", { exact: true }).fill("Redes");
     if (title === "Diseñar topología") {
       await page.getByRole("textbox", { name: /^Título \*/ }).fill("ab");
-      const rejected = page.waitForResponse(r => r.request().method() === "POST" && r.url().endsWith("/tasks"));
-      await page.getByRole("button", { name: "Guardar tarea", exact: true }).click();
+      const rejected = page.waitForResponse(
+        (r) => r.request().method() === "POST" && r.url().endsWith("/tasks"),
+      );
+      await page
+        .getByRole("button", { name: "Guardar tarea", exact: true })
+        .click();
       expect((await rejected).status()).toBe(400);
       await expect(page.getByRole("alert")).toContainText(/3 y 60/);
-      await page.screenshot({ path: `${evidence}/08-validacion.png`, fullPage: true });
+      await page.screenshot({
+        path: `${evidence}/08-validacion.png`,
+        fullPage: true,
+      });
       await page.getByRole("textbox", { name: /^Título \*/ }).fill(title);
     }
     await page
@@ -111,9 +137,12 @@ test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia
   await page
     .getByRole("combobox", { name: /^Tarea requerida/ })
     .selectOption({ label: "Diseñar topología" });
+  const linked = page.waitForResponse(r=>r.request().method()==='POST'&&r.url().endsWith('/dependencies'));
   await page
     .getByRole("button", { name: "Agregar dependencia", exact: true })
     .click();
+  expect((await linked).status()).toBe(200);
+  await expect(page.getByRole('button',{name:'Quitar dependencia Diseñar topología',exact:true})).toBeVisible();
   expect((await changeState(page, "in_progress")).status()).toBe(200);
   expect((await changeState(page, "delivered")).status()).toBe(409);
   await expect(page.getByRole("alert")).toBeVisible();
@@ -160,11 +189,25 @@ test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia
     fullPage: true,
   });
   const apiPage = await page.context().newPage();
-  const apiResponse = await apiPage.goto('/api/tasks');
+  const apiResponse = await apiPage.goto("/api/tasks");
   expect(apiResponse?.status()).toBe(200);
-  await expect(apiPage.locator('body')).toContainText('Entregar TP de Redes');
-  writeFileSync(`${evidence}/api-lectura.json`, JSON.stringify({method:'GET',url:apiResponse!.url(),status:apiResponse!.status(),response:await apiResponse!.json()},null,2));
-  await apiPage.screenshot({path:`${evidence}/09-api.png`,fullPage:true});
+  await expect(apiPage.locator("body")).toContainText("Entregar TP de Redes");
+  const prettyPrint = apiPage.getByRole("checkbox");
+  if (await prettyPrint.count()) await prettyPrint.check();
+  writeFileSync(
+    `${evidence}/api-lectura.json`,
+    JSON.stringify(
+      {
+        method: "GET",
+        url: apiResponse!.url(),
+        status: apiResponse!.status(),
+        response: await apiResponse!.json(),
+      },
+      null,
+      2,
+    ),
+  );
+  await apiPage.screenshot({ path: `${evidence}/09-api.png`, fullPage: true });
   await apiPage.close();
   await page.setViewportSize({ width: 390, height: 844 });
   expect(
@@ -184,7 +227,16 @@ test("cuentas privadas, dependencias, entrega protegida, progreso y persistencia
     .getByLabel("Correo electrónico", { exact: true })
     .fill(`otra-${Date.now()}@example.test`);
   await page.getByLabel("Contraseña", { exact: true }).fill(password);
+  const isolatedProjects = page.waitForResponse(
+    (r) => r.request().method() === "GET" && r.url().endsWith("/api/projects"),
+  );
   await page.getByRole("button", { name: "Registrarme", exact: true }).click();
+  const privateList = await isolatedProjects;
+  expect(privateList.status()).toBe(200);
+  expect((await privateList.json()).data).toEqual([]);
+  await expect(
+    page.getByRole("button", { name: "Nuevo proyecto", exact: true }),
+  ).toBeVisible();
   await expect(
     page.getByRole("button", {
       name: "Abrir proyecto Proyecto técnico de Redes",

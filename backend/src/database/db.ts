@@ -1,5 +1,7 @@
 import { Pool, type PoolClient, type QueryResultRow } from "pg";
 import { PGlite } from "@electric-sql/pglite";
+import { mkdirSync } from "node:fs";
+import { resolve } from "node:path";
 
 export interface Database {
   query<T extends QueryResultRow = QueryResultRow>(
@@ -39,7 +41,9 @@ export async function connectDatabase(options: {
     await pool.query("SELECT 1");
     return wrap(pool);
   }
-  const engine = new PGlite(options.dataDir ?? "data/postgres");
+  const dataDir = options.dataDir ?? "data/postgres";
+  if (dataDir !== "memory://") mkdirSync(resolve(dataDir), { recursive: true });
+  const engine = new PGlite(dataDir);
   await engine.waitReady;
   const database: Database = {
     query: (sql, params) => engine.query(sql, params),

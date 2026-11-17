@@ -707,6 +707,7 @@ button:disabled {
   font-size: 14px;
 }
 .modal {
+  margin: auto;
   padding: 28px;
   border: 1px solid #d4dce8;
   border-radius: 15px;

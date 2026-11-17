@@ -103,12 +103,19 @@ describe("Autenticación y cuentas privadas", () => {
   it("login correcto, contraseña incorrecta y logout invalidan sesión", async () => {
     const address = email();
     const agent = request.agent(context.app);
-    await agent
+    const registration = await agent
       .post("/api/auth/register")
       .send({ email: address, password })
       .expect(201);
+    const originalCookie = String(registration.headers["set-cookie"][0]).split(
+      ";",
+    )[0];
     await agent.post("/api/auth/logout").send({}).expect(204);
     await agent.get("/api/auth/me").expect(401);
+    await request(context.app)
+      .get("/api/auth/me")
+      .set("Cookie", originalCookie)
+      .expect(401);
     await agent
       .post("/api/auth/login")
       .send({ email: address, password: "Contraseña-incorrecta" })
@@ -546,7 +553,9 @@ describe("Cálculos y persistencia", () => {
       /stack|node_modules|SELECT|database is closed/i,
     );
     // Health probes check the database too: an unavailable database must remain unhealthy.
-    const health = await request(unavailable.app).get("/api/health").expect(500);
+    const health = await request(unavailable.app)
+      .get("/api/health")
+      .expect(500);
     expect(health.body.error.code).toBe("INTERNAL_ERROR");
   });
   it("proyecto vacío tiene progreso cero; conflictos requieren tres tareas", async () => {
