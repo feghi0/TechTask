@@ -1,13 +1,134 @@
-import { useState } from 'react';
-import { GraduationCap, ListTodo, Plus, Search, Check, CircleDashed } from 'lucide-react';
-import { useTasks } from './hooks/useTasks';
-import { TaskCard } from './components/TaskCard';
-import { TaskForm } from './components/TaskForm';
-import { statusLabels } from './utils/dates';
-export default function App() {
-  const {tasks,loading,error,reload,create}=useTasks();
-  const [form,setForm]=useState(false),[query,setQuery]=useState(''),[subject,setSubject]=useState(''),[status,setStatus]=useState(''),[favorites,setFavorites]=useState(false),[success,setSuccess]=useState('');
-  const filtered=tasks.filter(task=>(!subject||task.subject===subject)&&(!status||task.status===status)&&(!favorites||task.isFavorite)&&`${task.title} ${task.description??''}`.toLocaleLowerCase('es').includes(query.toLocaleLowerCase('es')));
-  return <div className="shell"><nav className="sidebar" aria-label="Principal"><div className="brand"><GraduationCap size={32}/><strong>TechTask</strong></div><a href="#tasks"><ListTodo size={20}/> Mis tareas</a><span className="course">Generación T</span></nav><main id="tasks"><header><h1>Mis tareas</h1><button className="primary" onClick={()=>{setForm(true);setSuccess('');}}><Plus size={20}/> Nueva tarea</button></header><div className="workspace"><section className="task-area" aria-label="Gestión de tareas"><div className="stats">{[{label:'Total',value:tasks.length,icon:ListTodo},{label:'En desarrollo',value:tasks.filter(t=>t.status==='in_progress').length,icon:CircleDashed},{label:'Entregadas',value:tasks.filter(t=>t.status==='delivered').length,icon:Check}].map(({label,value,icon:Icon})=><div className="stat" key={label}><Icon/><div><span>{label}</span><strong>{loading?'—':value}</strong></div></div>)}</div><div className="filters"><label className="search"><span className="sr-only">Buscar tareas</span><Search size={18}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder="Buscar por título o descripción…"/></label><label>Materia<select value={subject} onChange={e=>setSubject(e.target.value)}><option value="">Todas las materias</option>{[...new Set(tasks.map(t=>t.subject))].sort().map(s=><option key={s}>{s}</option>)}</select></label><label>Estado<select value={status} onChange={e=>setStatus(e.target.value)}><option value="">Todos los estados</option>{Object.entries(statusLabels).map(([v,l])=><option key={v} value={v}>{l}</option>)}</select></label></div><label className="check favorites"><input type="checkbox" checked={favorites} onChange={e=>setFavorites(e.target.checked)}/> Solo favoritas</label>{success?<p className="success" role="status">{success}</p>:null}{error?<div className="error" role="alert">{error} <button onClick={()=>void reload()}>Reintentar</button></div>:loading?<p role="status">Cargando tareas…</p>:filtered.length?<div className="task-list">{filtered.map(task=><TaskCard key={task.id} task={task}/>)}</div>:<div className="empty"><ListTodo size={38}/><h2>{tasks.length?'Sin coincidencias':'Tu próximo proyecto empieza acá'}</h2><p>{tasks.length?'Probá con otros filtros.':'Creá tu primera tarea y organizá tus entregas.'}</p>{!tasks.length?<button className="primary" onClick={()=>setForm(true)}>Crear mi primera tarea</button>:null}</div>}</section>{form?<TaskForm onClose={()=>setForm(false)} onCreate={async task=>{await create(task);setSuccess('Tarea guardada en el servidor.');}}/>:null}</div></main></div>;
-}
+import { useEffect, useState } from "react";
+import { GraduationCap, FolderOpen, LogOut, ShieldCheck } from "lucide-react";
+import type { User } from "../../shared/contracts";
+import { api, ApiError, errorMessage } from "./services/api";
+import { AuthScreen } from "./components/AuthScreen";
+import { ProjectList } from "./components/ProjectList";
+import { ProjectWorkspace } from "./components/ProjectWorkspace";
 
+export default function App() {
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const [notice, setNotice] = useState("");
+  const [projectId, setProjectId] = useState<string | null>(() => {
+    const candidate = new URLSearchParams(window.location.hash.slice(1)).get(
+      "project",
+    );
+    return candidate && /^[\da-f-]{36}$/i.test(candidate) ? candidate : null;
+  });
+  const [loggingOut, setLoggingOut] = useState(false);
+  function selectProject(id: string | null) {
+    setProjectId(id);
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}${window.location.search}${id ? `#project=${id}` : ""}`,
+    );
+  }
+  async function restore() {
+    setLoading(true);
+    setError("");
+    try {
+      setUser(await api.me());
+    } catch (error) {
+      if (!(error instanceof ApiError && error.status === 401))
+        setError(errorMessage(error));
+    } finally {
+      setLoading(false);
+    }
+  }
+  useEffect(() => {
+    void restore();
+    const expired = () => {
+      setUser(null);
+      selectProject(null);
+      setNotice("Tu sesión terminó. Ingresá nuevamente.");
+    };
+    window.addEventListener("session-expired", expired);
+    return () => window.removeEventListener("session-expired", expired);
+  }, []);
+  async function logout() {
+    setLoggingOut(true);
+    setError("");
+    try {
+      await api.logout();
+      setUser(null);
+      selectProject(null);
+      setNotice("Sesión cerrada.");
+    } catch (error) {
+      setError(errorMessage(error));
+    } finally {
+      setLoggingOut(false);
+    }
+  }
+  if (loading)
+    return (
+      <div className="boot-state" role="status">
+        <GraduationCap size={40} />
+        <p>Abriendo TechTask…</p>
+      </div>
+    );
+  if (!user)
+    return error ? (
+      <div className="boot-state">
+        <h1>No pudimos conectar</h1>
+        <p role="alert">{error}</p>
+        <button className="primary" onClick={() => void restore()}>
+          Reintentar
+        </button>
+      </div>
+    ) : (
+      <AuthScreen
+        notice={notice}
+        onAuthenticated={(authenticated) => {
+          setUser(authenticated);
+          setNotice("");
+          selectProject(null);
+        }}
+      />
+    );
+  return (
+    <div className="shell">
+      <nav className="sidebar" aria-label="Principal">
+        <div className="brand">
+          <GraduationCap size={32} />
+          <strong>TechTask</strong>
+        </div>
+        <button className="nav-projects" onClick={() => selectProject(null)}>
+          <FolderOpen size={20} />
+          Mis proyectos
+        </button>
+        <div className="account">
+          <ShieldCheck size={17} />
+          <span title={user.email}>{user.email}</span>
+        </div>
+        <button
+          className="logout"
+          onClick={() => void logout()}
+          disabled={loggingOut}
+        >
+          <LogOut size={17} />
+          {loggingOut ? "Cerrando…" : "Cerrar sesión"}
+        </button>
+        <span className="course">Generación T</span>
+      </nav>
+      <main id="content">
+        {error ? (
+          <p className="error" role="alert">
+            {error}
+          </p>
+        ) : null}
+        {projectId ? (
+          <ProjectWorkspace
+            key={projectId}
+            projectId={projectId}
+            onBack={() => selectProject(null)}
+          />
+        ) : (
+          <ProjectList onSelect={selectProject} />
+        )}
+      </main>
+    </div>
+  );
+}
