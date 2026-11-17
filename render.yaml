@@ -1,0 +1,19 @@
+# Primera publicación: React y API bajo el mismo origen.
+# DATABASE_URL debe configurarse como secreto del proveedor.
+services:
+  - type: web
+    name: techtask-generacion-t
+    runtime: node
+    plan: free
+    buildCommand: npm ci --include=dev && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NODE_VERSION
+        value: 22.21.0
+      - key: HOST
+        value: 0.0.0.0
+      - key: DATABASE_URL
+        sync: false
