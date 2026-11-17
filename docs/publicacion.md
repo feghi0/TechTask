@@ -35,3 +35,7 @@ La revisión automática inicialmente rechazó el destino de las pruebas remotas
 Planes gratuitos con cuotas y posible suspensión por inactividad. La prueba acredita funcionamiento en la ejecución registrada, no disponibilidad ininterrumpida hasta la fecha de entrega. Antes de exponer, abrir health y comprobar el recorrido breve. No contratar planes pagos sin autorización del titular.
 
 El servicio fue creado desde la URL pública del repositorio. Aunque su bandera autoDeploy indique yes, el despliegue no siguió automáticamente el push en esta ejecución: se requirió despliegue autorizado y se verificó su commit. Para actualizaciones, revisar deployments antes de disparar una nueva; no duplicar despliegues ya activos. HTTP health está en la receta Blueprint; el servicio creado por API utiliza su comprobación TCP predeterminada y la verificación externa consulta /api/health.
+
+## Actualización de contraseña
+
+El mínimo solicitado de 4 caracteres está publicado en commit1b0c2a2, deploy dep-dbtpv6sipgvc739qgm70 (live). Verificación real por Edge: formulario minlength4, registro201 y login200 con4 caracteres; con3 el servidor devuelve400. CI: https://github.com/feghi0/TechTask/actions/runs/43987809403. Captura y resultado en docs/evidencias/password4.

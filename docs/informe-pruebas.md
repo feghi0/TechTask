@@ -51,3 +51,7 @@ El primer CI falló por directorio padre ausente en Linux, no por un servicio re
 ## Límites
 
 No se ejecutó prueba de carga ni auditoría externa. No se cuantificó cobertura. Edge/Chromium no equivalen a Safari/Firefox. No hay garantía de accesibilidad total por usar etiquetas y diálogo nativo. El plan gratuito puede suspender cómputo y las verificaciones acreditan la ejecución registrada, no disponibilidad futura ininterrumpida.
+
+## Cambio posterior: mínimo de contraseña de4 caracteres
+
+Por instrucción explícita del usuario el mínimo pasó de12 a4. La prueba nueva falló primero (registro400 esperado201) y pasó tras actualizar backend/UI. Batería actual:60/60, compilación y CI43987809403 aprobados. Los registros59/59 y57 Neon anteriores son históricos y no se alteran. Evidencia en password4-rojo.txt, password4-verde.txt y password4-build.txt.
