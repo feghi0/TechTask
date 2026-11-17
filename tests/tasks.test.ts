@@ -221,6 +221,9 @@ describe("Contratos, validación y proyectos", () => {
     { id: "inyectado" },
     { createdAt: "inyectado" },
     { status: "delivered" },
+    { title: "Título\u0000inválido" },
+    { subject: "Redes\u0000" },
+    { description: "Descripción\u0000inválida" },
   ])("rechaza entrada inválida %j", async (override) => {
     const owned = await project();
     await actor
@@ -237,6 +240,32 @@ describe("Contratos, validación y proyectos", () => {
       .send(raw)
       .expect(400);
   });
+  it("rechaza NUL en correo y textos de proyecto antes de llegar a PostgreSQL", async () => {
+    await request(context.app)
+      .post("/api/auth/register")
+      .send({ email: `nul-${runTag}\u0000@example.test`, password })
+      .expect(400);
+    await actor
+      .post("/api/projects")
+      .send({ name: "Proyecto\u0000inválido" })
+      .expect(400);
+    await actor
+      .post("/api/projects")
+      .send({
+        name: "Proyecto válido",
+        description: "Descripción\u0000inválida",
+      })
+      .expect(400);
+  });
+  it("acepta 10000 puntos Unicode de descripción dentro del límite JSON", async () => {
+    const owned = await project();
+    const description = "😀".repeat(10000);
+    const response = await actor
+      .post(`/api/projects/${owned.id}/tasks`)
+      .send({ ...input, description })
+      .expect(201);
+    expect(response.body.data.description).toBe(description);
+  });
   it("controla JSON inválido, tamaño y formato sin cerrar el servidor", async () => {
     const owned = await project();
     const url = `/api/projects/${owned.id}/tasks`;
@@ -249,7 +278,7 @@ describe("Contratos, validación y proyectos", () => {
     await actor.post(url).send("title=Tarea").expect(415);
     await actor
       .post(url)
-      .send({ ...input, description: "x".repeat(40000) })
+      .send({ ...input, description: "x".repeat(150000) })
       .expect(413);
     await actor.get("/api/projects").expect(200);
   });
@@ -405,6 +434,29 @@ describe("Estados, dependencias y concurrencia", () => {
       .send({ version: a.version, dependencyId: b.id })
       .expect(409);
   });
+  it("quitar una dependencia de una tarea entregada preserva su estado", async () => {
+    const owned = await project();
+    let value = await task(owned.id, "Entrega completa");
+    const prerequisite = await delivered(
+      await task(owned.id, "Requisito completo"),
+    );
+    value = await dependency(value, prerequisite);
+    value = await delivered(value);
+    const historyBefore = (await actor.get(`/api/tasks/${value.id}/history`))
+      .body.data;
+    const result = await actor
+      .delete(`/api/tasks/${value.id}/dependencies/${prerequisite.id}`)
+      .send({ version: value.version })
+      .expect(200);
+    expect(result.body.data).toMatchObject({
+      status: "delivered",
+      dependencyIds: [],
+      version: value.version + 1,
+    });
+    expect(
+      (await actor.get(`/api/tasks/${value.id}/history`)).body.data,
+    ).toEqual(historyBefore);
+  });
   it("protege referenciadas y entregadas; elimina tareas permitidas", async () => {
     const owned = await project();
     let a = await task(owned.id);
@@ -484,6 +536,19 @@ describe("Estados, dependencias y concurrencia", () => {
   });
 });
 describe("Cálculos y persistencia", () => {
+  it("controla un fallo real de almacenamiento sin exponer detalles internos", async () => {
+    const unavailable = await createApp({ dataDir: "memory://" });
+    const agent = await account(unavailable.app);
+    await unavailable.close();
+    const response = await agent.get("/api/projects").expect(500);
+    expect(response.body.error.code).toBe("INTERNAL_ERROR");
+    expect(JSON.stringify(response.body)).not.toMatch(
+      /stack|node_modules|SELECT|database is closed/i,
+    );
+    // Health probes check the database too: an unavailable database must remain unhealthy.
+    const health = await request(unavailable.app).get("/api/health").expect(500);
+    expect(health.body.error.code).toBe("INTERNAL_ERROR");
+  });
   it("proyecto vacío tiene progreso cero; conflictos requieren tres tareas", async () => {
     const owned = await project();
     const empty: ProjectDetail = (
