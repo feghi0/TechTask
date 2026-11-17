@@ -1,0 +1,6 @@
+
+> techtask@1.0.0 docs:check
+> node scripts/check-documentation.mjs
+
+Documentos Markdown: 40. Enlaces locales comprobados: 39. Rutas HTTP documentadas: 21.
+Sin enlaces locales rotos ni rutas HTTP explícitas omitidas en el manual. No verifica URLs externas ni anclas.

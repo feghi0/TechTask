@@ -4,7 +4,9 @@ Aplicación: **https://techtask-generacion-t.onrender.com**
 API: **https://techtask-generacion-t.onrender.com/api**  
 Health: **https://techtask-generacion-t.onrender.com/api/health**  
 Repositorio: **https://github.com/feghi0/TechTask**  
-CI verificado: **https://github.com/feghi0/TechTask/actions/runs/43985660035**
+CI de la revisión funcional vigente: **https://github.com/feghi0/TechTask/actions/runs/43987809403**
+
+Estado vigente: contraseña de **4 a 128 caracteres**, commit funcional `1b0c2a2`, deploy `dep-dbtpv6sipgvc739qgm70` verificado live. El relevamiento documental confirmó además CI exitoso de `e56d4cb` y health200. Consultar [manual de operación](manuales/06-operacion-despliegue.md).
 
 ## Recursos y configuración
 
@@ -14,9 +16,9 @@ CI verificado: **https://github.com/feghi0/TechTask/actions/runs/43985660035**
 - Cuenta del visitante: registro desde la UI. Datos privados por propietario, no demo compartida ni contraseña docente publicada.
 - El archivo render.yaml es una receta reproducible. La creación efectiva se hizo mediante API de Render, no aplicando un Blueprint; no se afirma que cada campo de esa receta haya sido configurado por ese método.
 
-## Despliegue y comprobaciones
+## Historial de despliegue y comprobaciones
 
-Commit funcional verificado: `1285e2354bcc821dc77540218d485783135cd7fb`. Deploy Render `dep-dbtpokg8v5cc73b083j0` alcanzó estado live y se probó después. Commits posteriores de documentación/formato no cambian reglas productivas.
+Commit funcional verificado: `1285e2354bcc821dc77540218d485783135cd7fb`. Deploy Render `dep-dbtpokg8v5cc73b083j0` alcanzó estado live y se probó después. Este registro corresponde a la primera entrega. El cambio posterior `1b0c2a2` sí modifica el mínimo de contraseña; sus pruebas están registradas al final de este documento.
 
 Se ejecutó Playwright contra la URL pública con cuentas ficticias: registro, proyecto, tareas, dependencia, rechazo de entrega409, finalización válida, historial,100% de progreso, recarga, GET, móvil y aislamiento de segunda cuenta. Evidencia en e2e-publico.txt y publicacion/*.png. Se comprobó además health 200, cookie Secure/HttpOnly/SameSite=Lax, origen ajeno 403, logout204 y reutilización de cookie revocada 401 (seguridad-https.json).
 

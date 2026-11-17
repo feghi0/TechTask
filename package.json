@@ -15,7 +15,8 @@
     "test:e2e": "playwright test",
     "format:check": "prettier --check frontend/src backend/src shared tests",
     "import:sqlite": "tsx scripts/import-sqlite.ts",
-    "demo": "tsx scripts/seed-demo.ts"
+    "demo": "tsx scripts/seed-demo.ts",
+    "docs:check": "node scripts/check-documentation.mjs"
   },
   "keywords": [],
   "author": "",

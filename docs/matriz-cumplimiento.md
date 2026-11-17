@@ -19,7 +19,7 @@ Los estados corresponden al alcance aprobado con cuentas privadas y a las ejecuc
 | Frontend funcional | frontend; capturas locales/públicas; e2e | Cumplido y verificado | Edge/Chromium,390px y 1600px. |
 | Backend funcional | backend;57 tests Neon; CI PostgreSQL 16 | Cumplido y verificado | Sesión privada, contratos, validación y transacciones. |
 | Persistencia | tests/import, database, tasks; captura 06 pública | Cumplido y verificado | Reapertura local, importación, recarga pública y DB externa. |
-| Tests aprobados | tests-verde.txt; tests-postgresql-remoto.txt; ci-verde.json | Cumplido y verificado |59 locales;57 en Neon; CI integración y navegador. |
+| Tests aprobados | tests-verde.txt; tests-postgresql-remoto.txt; ci-verde.json | Cumplido y verificado |60 locales vigentes (password4-verde.txt);57 en la ejecución Neon histórica; CI y navegador verificados. |
 | Commits por tarea | git log; GitHub | Cumplido y verificado | Base, SPEC, rojo, backend, frontend, import/deploy, pruebas y correcciones. |
 | Seguridad | tests HU11; seguridad-https.json; revisión | Cumplido y verificado | Dueño, sesión, cookie segura, CORS/origen y secretos excluidos. No equivale a pentest externo. |
 | Despliegue público | docs/publicacion.md; e2e-publico.txt | Cumplido y verificado | Render live, Neon persistente y recorrido probado por HTTPS. |
@@ -33,3 +33,7 @@ Los estados corresponden al alcance aprobado con cuentas privadas y a las ejecuc
 No hay recuperación/verificación de correo, colaboración entre cuentas, cobertura porcentual, prueba de carga o auditoría de seguridad externa. Son exclusiones del alcance, no pendientes ocultos. El estudiante puede agregar una conclusión personal propia; no se considera evidencia fabricada por la IA.
 
 Los proveedores gratuitos pueden suspender cómputo y cambiar cuotas. Verificar el acceso antes de la exposición. La matriz acredita la entrega registrada, no una garantía de servicio continuo.
+
+## Ampliación documental
+
+Once manuales específicos, índice por destinatario y relevamiento actual en docs/README.md. Los procedimientos de restauración externa están identificados como instrucciones operativas, no como pruebas ya ejecutadas. La comprobación `npm run docs:check` verifica enlaces locales y cobertura de las21 rutas explícitas.

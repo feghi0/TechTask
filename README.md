@@ -7,6 +7,8 @@ Gestión privada de proyectos técnicos y entregas escolares. Proyecto Final de 
 Repositorio: https://github.com/feghi0/TechTask  
 Aplicación pública: **https://techtask-generacion-t.onrender.com**. Ver `docs/publicacion.md` para configuración y comprobaciones.
 
+**Documentación completa:** [índice por destinatario](docs/README.md), [manual de usuario](docs/manuales/01-usuario.md), [instalación](docs/manuales/02-instalacion-configuracion.md), [API](docs/manuales/04-api-rest.md) y [relevamiento actual](docs/relevamiento-actual.md).
+
 ## Problema y funcionalidades
 
 TechTask ayuda a organizar entregas que dependen de actividades previas. Una cuenta tiene sus propios proyectos y tareas; no puede leer ni modificar los de otra.

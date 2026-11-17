@@ -4,11 +4,11 @@
 
 SPEC aprobada → criterios HU/RN → pruebas independientes → rojo → implementación → verde → revisión. No se usa porcentaje de cobertura ni una métrica de «precisión del agente» inventada: estos casos evalúan comportamiento del sistema sobre entradas conocidas, no capacidad general de la IA.
 
-Local: Windows, Node 22.21.0, PostgreSQL embebido PGlite y SQLite solo para importación de legado. Batería local: 59 casos en 4 archivos. Remoto: 57 casos de HTTP/calendario sobre Neon PostgreSQL 16, exclusivamente en techtask_test; importación y arranque de directorio son 2 casos locales adicionales. CI ejecuta la batería con servicio PostgreSQL 16 más Chromium. Navegador local y público: Edge, escritorio 1600×1050 y móvil 390×844.
+Local: Windows, Node 22.21.0, PostgreSQL embebido PGlite y SQLite solo para importación de legado. Batería local vigente: 60 casos en 4 archivos. Remoto: 57 casos de HTTP/calendario sobre Neon PostgreSQL 16, exclusivamente en techtask_test; importación y arranque de directorio son 2 casos locales adicionales. CI ejecuta la batería con servicio PostgreSQL 16 más Chromium. Navegador local y público: Edge, escritorio 1600×1050 y móvil 390×844.
 
 ## Casos y trazabilidad
 
-Todos los resultados siguientes tienen respaldo en tests-verde.txt, tests-postgresql-remoto.txt, ci-verde.json/ci-verde.txt y registros e2e. Los tests ejecutables definen entradas exactas y aserciones; esta tabla agrupa casos relacionados sin sumar grupos como si fueran tests adicionales.
+Todos los resultados siguientes tienen respaldo en tests-verde.txt, tests-postgresql-remoto.txt, ci-verde.json/ci-verde.txt y registros e2e. Para el cambio posterior de mínimo de contraseña, consultar también password4-verde.txt (60/60) y password4/resultado-publico.json. Los tests ejecutables definen entradas exactas y aserciones; esta tabla agrupa casos relacionados sin sumar grupos como si fueran tests adicionales.
 
 | ID | Requisito | Entrada / esperado previamente | Obtenido | Estado / evidencia |
 |---|---|---|---|---|

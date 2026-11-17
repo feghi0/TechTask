@@ -94,13 +94,13 @@ El importador abre SQLite en solo lectura, exporta un respaldo y autentica una c
 
 ## 16. Pruebas
 
-La batería final local contiene 59 pruebas: reglas y HTTP, calendario, concurrencia, fallos e importación. El e2e de Edge recorre registro→proyecto→tareas→dependencia→rechazo409→resolución→entrega→historial/progreso→recarga→móvil→logout→segunda cuenta. Los logs originales están en docs/evidencias y el detalle requisito/datos/resultado en informe-pruebas.md.
+La batería vigente local contiene 60 pruebas (59 de la entrega inicial y una regresión posterior del mínimo de contraseña): reglas y HTTP, calendario, concurrencia, fallos e importación. El cambio posterior del mínimo a 4 caracteres se registra en decisiones.md y password4-verde.txt; no se modificaron los logs históricos. El e2e de Edge recorre registro→proyecto→tareas→dependencia→rechazo409→resolución→entrega→historial/progreso→recarga→móvil→logout→segunda cuenta. Los logs originales están en docs/evidencias y el detalle requisito/datos/resultado en informe-pruebas.md.
 
 Los tests TP4 incompatibles con cuentas privadas se preservaron en tests/legacy como antecedentes. No se hicieron pasar debilitando seguridad para conservar el contrato anónimo anterior.
 
 ## 17. Resultados
 
-TypeScript y compilación pasaron tras integración. Las 59 pruebas locales y el e2e pasaron. Se registran por separado la batería remota, CI y el despliegue en los documentos de publicación y pruebas; no deben deducirse a partir del resultado local.
+TypeScript y compilación pasaron tras integración. Las 60 pruebas locales y el e2e pasaron. Se registran por separado la batería remota, CI y el despliegue en los documentos de publicación y pruebas; no deben deducirse a partir del resultado local.
 
 ## 18. Seguridad
 

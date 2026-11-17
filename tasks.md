@@ -19,9 +19,13 @@ Cada fila registra unidad revisable. Actualizar solo con evidencia real. Depende
 | T13 | Revisión seguridad y CI PostgreSQL | Revisor/Tester/Root | RN09/12 | T04–11 | Tests CI, sin secretos, revisión corregida | Terminada: pruebas y evidencia registradas |
 | T14 | Hosting y base externa | Root | RN09/11 | T13 | URLs reales, migraciones, flujo público privado probado | Terminada: Render live y e2e público |
 | T15 | Informe, evidencias y matriz final | Root/Analista | Todas | T11–14 | Documentos y estados respaldados, remoto actualizado | Terminada: pruebas y evidencia registradas |
+| T16 | Ajustar mínimo de contraseña a4 por pedido del usuario | Root | HU01/RN09 | T05 | Registro/login4, rechazo3,60 tests y verificación pública | Terminada: evidencia password4 |
+| T17 | Relevar y completar manuales/documentación | Root | Documentación | T16 | Inventario,11 manuales, índice y enlaces/rutas comprobados | Terminada: docs/README.md y relevamiento-actual.md |
 
 No se marca completada la implementación general hasta que T14 esté verificada. Una tarea con código pero sin pruebas sigue en curso.
 
 ## Verificación final
 
-59 pruebas locales;57 en base Neon aislada; CI 43985660035 exitoso (PostgreSQL 16+Chromium); e2e público 1/1 y seguridad HTTPS. T14 desplegó commit 1285e23 en Render y se repitió el recorrido tras live. Detalle por casos: docs/informe-pruebas.md. La documentación/formato posteriores no cambian reglas; sincronización GitHub se verifica antes de entregar.
+Etapa inicial:59 pruebas locales y57 en base Neon aislada; CI 43985660035 exitoso (PostgreSQL 16+Chromium); e2e público 1/1 y seguridad HTTPS. T14 desplegó commit 1285e23 en Render y se repitió el recorrido tras live. Detalle por casos: docs/informe-pruebas.md. La documentación/formato posteriores no cambian reglas; sincronización GitHub se verifica antes de entregar.
+
+Estado posterior:60 pruebas por actualización de contraseña, CI43987809403 y43988065141 exitosos. El relevamiento documental no cambió comportamiento de la aplicación.
